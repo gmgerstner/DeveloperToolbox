@@ -6,9 +6,8 @@
     "open": "ng build && ng serve --open",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "deploy": "ng build && xcopy dist\\developer-toolbox-ui \\\\darmik\\web\\gmgdigitaltechnologies.com\\devtoolbox /E/Y"
+    "build:prod": "ng build --configuration production --base-href /DeveloperToolbox/",
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
@@ -35,15 +34,8 @@
     "@angular-devkit/build-angular": "^15.1.4",
     "@angular/cli": "^15.1.4",
     "@angular/compiler-cli": "^15.1.3",
-    "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "@types/uuid": "^8.3.4",
-    "jasmine-core": "~4.0.0",
-    "karma": "~6.3.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.1.0",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "~1.7.0",
     "tslib": "^2.5.0",
     "typescript": "~4.9.5"
   }
