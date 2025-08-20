@@ -53,4 +53,32 @@ export class StringLengthComponent implements OnInit {
 
     document.body.removeChild(element);
   }
+
+  get characterCount(): number {
+    return this.content.length;
+  }
+
+  get wordCount(): number {
+    if (!this.content || this.content.trim() === '') {
+      return 0;
+    }
+    
+    // Split by whitespace and filter out empty strings
+    const words = this.content.trim().split(/\s+/).filter(word => word.length > 0);
+    return words.length;
+  }
+
+  get lineCount(): number {
+    if (!this.content) {
+      return 0;
+    }
+    
+    // Count lines by splitting on line breaks
+    const lines = this.content.split(/\r\n|\r|\n/);
+    return lines.length;
+  }
+
+  get characterCountNoSpaces(): number {
+    return this.content.replace(/\s/g, '').length;
+  }
 }
