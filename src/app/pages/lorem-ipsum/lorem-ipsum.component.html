@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Lorem Ipsum</h1>
+      <div class="row">
+        <div class="col>">
+          <label>Type</label>
+          <select class="form-select" [(ngModel)]="type">
+            <option value="word">Word</option>
+            <option value="paragraph">Paragrah</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label>Length</label>
+          <input type="number" min="1" class="form-control" [(ngModel)]="length" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label>Starts With Lorem ipsum</label>
+          <select class="form-select" [(ngModel)]="startLorem">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="button" class="mt-1 btn btn-success" (click)="generateClicked()">Generate</button>
+        </div>
+      </div>      
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header">Text</div>
+        <div class="card-body">
+          <textarea class="form-control" readonly rows="10">{{output}}</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

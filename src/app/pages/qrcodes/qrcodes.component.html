@@ -1,0 +1,57 @@
+<!--<p>qrcodes works!</p>
+<label>Content</label>
+<textarea [(ngModel)]="content" rows="10"></textarea>
+<br />
+<button type="button" (click)="onGenerateClick()">Generate</button>
+<br />
+<canvas id="canvas"></canvas>-->
+<!-- https://github.com/zxing/zxing/wiki/Barcode-Contents -->
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>QR Codes</h1>
+      <div class="row">
+        <div class="col>">
+          <label>Type</label>
+          <select class="form-select mb-2" [(ngModel)]="type">
+            <option value="text">Basic Text</option>
+            <option value="url">URL Link</option>
+            <option value="email">Email</option>
+            <option value="phone">Phone Number</option>
+            <option value="contactinfo">Contact Info</option>
+            <option value="sms">SMS</option>
+            <option value="map">Map</option>
+            <option value="calendar">Calendar</option>
+            <option value="wifi">WiFi Connection</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-2">
+          <app-text-qr-input *ngIf="type=='text'" (contentEvent)="drawCanvas($event)"></app-text-qr-input>
+          <app-url-qr-input *ngIf="type=='url'" (contentEvent)="drawCanvas($event)"></app-url-qr-input>
+          <app-email-qr-input *ngIf="type=='email'" (contentEvent)="drawCanvas($event)"></app-email-qr-input>
+          <app-phone-qr-input *ngIf="type=='phone'" (contentEvent)="drawCanvas($event)"></app-phone-qr-input>
+          <app-contact-info-qr-input *ngIf="type=='contactinfo'" (contentEvent)="drawCanvas($event)"></app-contact-info-qr-input>
+          <app-sms-qr-input *ngIf="type=='sms'" (contentEvent)="drawCanvas($event)"></app-sms-qr-input>
+          <app-map-qr-input *ngIf="type=='map'" (contentEvent)="drawCanvas($event)"></app-map-qr-input>
+          <!--<app-calendar-qr-input *ngIf="type=='calendar'" (contentEvent)="drawCanvas($event)"></app-calendar-qr-input>-->
+          <app-wi-fi-qr-input *ngIf="type=='wifi'" (contentEvent)="drawCanvas($event)"></app-wi-fi-qr-input>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col">
+          <label>Image</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>     
+    </div>
+  </div>
+</div>

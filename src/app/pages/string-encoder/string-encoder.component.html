@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>String Encode/Decode</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label>Action</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <select class="form-select" [(ngModel)]="currentAlg">
+
+        <!--<optgroup label="Hash">-->
+          <!--<option id="">SHA-1 Hash</option>-->
+          <!--<option id="">SHA-2 Hash</option>-->
+          <!--<option id="">SHA224 Hash</option>-->
+          <!--<option id="">SHA256 Hash</option>-->
+          <!--<option id="">SHA384 Hash</option>-->
+          <!--<option id="">SHA512 Hash</option>-->
+          <!--<option id="">SHA512/224</option>-->
+          <!--<option id="">SHA512/256 Hash</option>-->
+          <!--<option id="">SHA3-224 Hash</option>-->
+          <!--<option id="">SHA3-256 Hash</option>-->
+          <!--<option id="">SHA3-384 Hash</option>-->
+          <!--<option id="">SHA3-512 Hash</option>-->
+          <!--<option id="">CRC-16 Hash</option>-->
+          <!--<option id="">CRC-32 Hash</option>-->
+        <!--</optgroup>-->
+
+        <optgroup label="HTML">
+          <option id="html-encode">HTML Encode</option>
+          <option id="html-decode">HTML Decode</option>
+        </optgroup>
+
+        <!--<optgroup label="Base32">
+    <option id="base32-encode">Base32 Encode</option>
+    <option id="base32-decode">Base32 Decode</option>
+  </optgroup>-->
+
+        <optgroup label="Base64">
+          <option id="base64-encode">Base64 Encode</option>
+          <option id="base64-decode">Base64 Decode</option>
+        </optgroup>
+
+        <optgroup label="URL">
+          <option id="url-encode">URL Encode</option>
+          <option id="url-decode">URL Decode</option>
+        </optgroup>
+
+        <optgroup label="Other">
+          <option id="sort-lines">Sort Lines</option>
+        </optgroup>
+
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label>Input String</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <textarea class="form-control" rows="10" [(ngModel)]="input"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-auto text-right">
+      <button class="btn btn-success ms-1 mt-1" type="button" (click)="selectFile.click()">Load File</button>
+      <button class="btn btn-success ms-1 mt-1" type="button" (click)="onClear()">Clear</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label>Output Code</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <textarea class="form-control" rows="10" readonly>{{output}}</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-success me-1 mt-1" (click)="onSave()">Save File</button>
+    </div>
+    <div class="col-auto text-right">
+      <button class="btn btn-success ms-1 mt-1 float-right" type="button" (click)="onCopy()">Copy</button>
+    </div>
+  </div>
+</div>
+
+<input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile>

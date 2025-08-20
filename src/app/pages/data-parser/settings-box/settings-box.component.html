@@ -1,0 +1,93 @@
+<div class="container-fluid">
+
+  <div class="row" id="description">
+    <h1>Data Parser</h1>
+    <p>Convert Excel data into one of several web-friendly formats, including HTML, JSON and XML.</p>
+  </div>
+
+  <hr />
+
+  <!--https://stackoverflow.com/questions/43095710/how-correctly-bind-data-to-radio-buttons-in-angular2-->
+  <div class="row" id="settings">
+    <h3>Settings:</h3>
+    <form>
+      <div class="form-group mb-2">
+        <label>Delimiter</label>
+        <div>
+          <div class="form-check form-check-inline">
+            <input name="delimiter" id="delimiter_0" type="radio" class="form-check-input" value="delimiterAuto" [checked]="settings.delimiter === 'auto'" (change)="onDelimiterChange('auto')">
+            <label for="delimiter_0" class="form-check-label">Auto</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input name="delimiter" id="delimiter_1" type="radio" class="form-check-input" value="delimiterComma" [checked]="settings.delimiter === 'comma'" (change)="onDelimiterChange('comma')">
+            <label for="delimiter_1" class="form-check-label">Comma</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input name="delimiter" id="delimiter_2" type="radio" class="form-check-input" value="delimiterTab" [checked]="settings.delimiter === 'tab'" (change)="onDelimiterChange('tab')">
+            <label for="delimiter_2" class="form-check-label">Tab</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label>Decimal Sign</label>
+        <div>
+          <div class="form-check form-check-inline">
+            <input name="decimal" id="decimal_0" type="radio" class="form-check-input" value="decimalDot" [checked]="settings.decimalSign === 'dot'" (change)="onDecimalSignChange('dot')">
+            <label for="decimal_0" class="form-check-label">Dot</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input name="decimal" id="decimal_1" type="radio" class="form-check-input" value="decimalComma" [checked]="settings.decimalSign === 'comma'" (change)="onDecimalSignChange('comma')">
+            <label for="decimal_1" class="form-check-label">Comma</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <div>
+          <div class="form-check form-check-inline">
+            <input name="headersProvidedCB" id="headersProvidedCB_0" type="checkbox" class="form-check-input" value="true" [(ngModel)]="settings.firstRowHeader" (change)="onFirstRowHeaderChange()">
+            <label for="headersProvidedCB_0" class="form-check-label">First row is the header</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label>Transform</label>
+        <div>
+          <div class="form-check form-check-inline">
+            <input name="headerModifications" id="headerModifications_0" type="radio" class="form-check-input" value="downcase" [checked]="settings.transformCase === 'downcase'" (change)="onTransformCaseChange('downcase')">
+            <label for="headerModifications_0" class="form-check-label">Lowercase</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input name="headerModifications" id="headerModifications_1" type="radio" class="form-check-input" value="upcase" [checked]="settings.transformCase === 'upcase'" (change)="onTransformCaseChange('upcase')">
+            <label for="headerModifications_1" class="form-check-label">Uppercase</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input name="headerModifications" id="headerModifications_2" type="radio" class="form-check-input" value="none" [checked]="settings.transformCase === 'none'" (change)="onTransformCaseChange('none')">
+            <label for="headerModifications_2" class="form-check-label">None</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <div>
+          <div class="form-check form-check-inline">
+            <input name="includeWhiteSpaceCB" id="includeWhiteSpaceCB_0" type="checkbox" class="form-check-input" value="true" [(ngModel)]="settings.includeWhiteSpace" (change)="onIncludeWhiteSpaceChange()">
+            <label for="includeWhiteSpaceCB_0" class="form-check-label">Include white space in output</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label>Indent with</label>
+        <div>
+          <div class="form-check form-check-inline">
+            <input name="indentType" id="indentType_0" type="radio" class="form-check-input" value="tabs" [checked]="settings.indentWith === 'tabs'" (change)="onIndentWithChange('tabs')">
+            <label for="indentType_0" class="form-check-label">Tabs</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input name="indentType" id="indentType_1" type="radio" class="form-check-input" value="spaces" [checked]="settings.indentWith === 'spaces'" (change)="onIndentWithChange('spaces')">
+            <label for="indentType_1" class="form-check-label">Spaces</label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

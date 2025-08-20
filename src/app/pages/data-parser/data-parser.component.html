@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <app-settings-box (onSettingsChanged)="onSettingsChanged($event)"></app-settings-box>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-12">
+          <app-input-box (onInputTextChanged)="onInputTextChanged($event)"></app-input-box>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <app-output-box [inputText]="inputText" [settings]="settings"></app-output-box>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>String Builder</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label>Input String</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <textarea class="form-control" rows="10" [(ngModel)]="content"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-auto text-right">
+      <button class="btn btn-success ms-1 mt-1" type="button" (click)="selectFile.click()">Load File</button>
+      <button class="btn btn-success ms-1 mt-1" type="button" (click)="onClear()">Clear</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label>Output Code</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <textarea class="form-control" rows="10" readonly>{{output}}</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-success me-1 mt-1" (click)="onSave()">Save File</button>
+    </div>
+    <div class="col-auto text-right">
+      <button class="btn btn-success ms-1 mt-1 float-right" type="button" (click)="onCopy()">Copy</button>
+    </div>
+  </div>
+</div>
+
+<input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile>

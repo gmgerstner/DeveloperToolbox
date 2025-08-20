@@ -1,0 +1,719 @@
+fieldset {
+  border: 0 none;
+  margin-top: 25px;
+  padding: 0;
+}
+
+  fieldset label {
+    width: 125px;
+    float: left;
+    display: block;
+    text-align: right;
+    padding-right: 10px;
+  }
+
+  fieldset div {
+    margin-top: 10px;
+  }
+
+
+/*-------------------------------------
+- Event Form
+--------------------------------------*/
+input.ical-date[readonly] {
+  width: 125px;
+  background-color: #fff;
+  display: inline-block;
+}
+
+select.ical-hour {
+  display: inline-block;
+  width: 130px;
+}
+
+select.ical-time {
+  display: inline-block;
+  width: 80px;
+}
+
+label.ical-form-label {
+  text-align: right;
+}
+
+@media only screen and (max-width: 575px) {
+  label.ical-form-label {
+    text-align: left;
+  }
+}
+/*-------------------------------------
+- End Event Form
+--------------------------------------*/
+
+table.event-dialog-form-table {
+  width: 100%;
+}
+
+  table.event-dialog-form-table #summary,
+  table.event-dialog-form-table #description,
+  table.event-dialog-form-table #location,
+  table.event-dialog-form-table #inputUrl {
+    width: 100%;
+  }
+
+
+
+  table.event-dialog-form-table td {
+    padding: 5px;
+  }
+
+td.event-dlg-inpt-label {
+  width: 100px;
+}
+
+table.event-dialog-form-table td:nth-of-type(1) {
+  text-align: right;
+  vertical-align: top;
+  padding-top: 8px;
+}
+
+button.btn-outline-danger:not(:hover) {
+  background-color: white;
+}
+
+/*
+button.btn-new-event span.ui-button-text{
+	padding-left: 25px;
+}
+
+button.btn-load span.ui-button-text{
+	padding-left: 25px;
+}
+
+button.btn-clear-event span.ui-button-text{
+	padding-left: 25px;
+}
+
+button.btn-advanced-option span.ui-button-text{
+	padding-left: 25px;
+}
+
+button.btn-generate-ical span.ui-button-text{
+	padding-left: 25px;
+}
+*/
+button.btn-about span.ui-button-text {
+  padding-left: 25px;
+}
+
+button.btn-feedback span.ui-button-text {
+  padding-left: 25px;
+}
+
+button.btn-download span.ui-button-text {
+  padding-left: 25px;
+}
+
+button.btn-close span.ui-button-text {
+  padding-left: 25px;
+}
+
+button.btn-email span.ui-button-text {
+  padding-left: 25px;
+}
+
+button.btn-small {
+  padding: 3px 8px 3px 8px;
+}
+
+button.btn-event-edit {
+  margin-left: 6px;
+}
+
+  button.btn-event-edit span.ui-button-text {
+    padding: 3px 8px;
+  }
+
+button.btn-event-delete {
+  margin-left: 6px;
+}
+
+  button.btn-event-delete span.ui-button-text {
+    padding: 3px 8px;
+  }
+
+button.btn-event-copy {
+  margin-left: 6px;
+}
+
+  button.btn-event-copy span.ui-button-text {
+    padding: 3px 8px;
+  }
+
+div.events-title {
+  clear: both;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+div.event-title-sel {
+  float: left;
+  width: 54px;
+  height: 20px;
+  border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 2px;
+  text-align: center;
+  font-size: 14px;
+}
+
+div.event-title-0 {
+  float: left;
+  width: 40px;
+  height: 20px;
+  border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 2px;
+}
+
+div.event-title-1 {
+  float: left;
+  width: 170px;
+  height: 20px;
+  border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 2px;
+}
+
+div.event-title-2 {
+  float: left;
+  width: 170px;
+  height: 20px;
+  border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 2px;
+}
+
+div.event-title-3 {
+  float: left;
+  width: 300px;
+  height: 20px;
+  border-bottom: 1px solid #D3D3D3;
+  padding-bottom: 2px;
+}
+
+div.events > div:nth-of-type(even) {
+  background: #fffaeb;
+}
+
+div.event-row {
+  margin-top: 6px;
+  margin-right: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  clear: both;
+  display: none;
+  /*width: 874px;*/
+  /*overflow: auto;*/
+}
+
+div.event-row-new {
+  background: none repeat scroll 0 0 #FFFF80 !important;
+}
+
+div.event-sel {
+  float: left;
+  width: 54px;
+  min-width: 54px;
+  padding-top: 4px;
+  text-align: center;
+}
+
+input.selectCheck {
+  transform: scale(1.5);
+}
+
+input#loadClearUID {
+  transform: scale(1.5);
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+div.event-weekday {
+  float: left;
+  width: 40px;
+  min-width: 40px;
+  padding-top: 4px;
+}
+
+div.event-date-start {
+  float: left;
+  width: 170px;
+  min-width: 170px;
+  padding-top: 4px;
+}
+
+div.event-date-end {
+  float: left;
+  width: 170px;
+  min-width: 170px;
+  padding-top: 4px;
+}
+
+div.event-summary {
+  float: left;
+  padding-top: 4px;
+}
+
+div.event-description {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+button.event-action-btn {
+  max-height: 38px;
+}
+
+div.ical-dialog {
+  padding: 0;
+}
+
+  div.ical-dialog div.ui-dialog-buttonpane {
+    padding-bottom: 2px;
+    padding-top: 2px;
+  }
+
+  div.ical-dialog div.ui-widget-header {
+    border: none;
+  }
+
+span.req-field {
+  color: red;
+}
+
+div.dlg-about li.about-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+div.ical-top-message {
+  margin-top: 20px;
+  padding: 0 .7em;
+  display: none;
+}
+
+  div.ical-top-message p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+span.ical-top-message {
+}
+
+div.titleAndTimezone {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+span.weekday-sun {
+  color: #F62817;
+}
+
+span.weekday-sat {
+  color: #306EFF;
+}
+
+div.event-detail {
+  clear: both;
+  margin-left: 94px;
+  padding-top: 2px;
+}
+
+label.hide-detail-label {
+  font-size: 0.8em;
+  border-radius: 5px;
+}
+
+label.clock-24h {
+  font-size: 0.8em;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+label.clock-12h {
+  font-size: 0.8em;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-right: -0.4em !important;
+}
+
+div#main-wrapper {
+  /*width:1024px;*/
+}
+
+div.ical-left {
+  float: left;
+  /*width:874px;*/
+}
+
+div.ical-right {
+  float: right;
+  max-width: 210px;
+  min-width: 210px;
+}
+
+@media only screen and (max-width: 1200px) {
+  div.ical-right {
+    max-width: 150px;
+    min-width: 150px;
+  }
+}
+
+div.bottom-links {
+  display: none;
+}
+
+@media only screen and (max-width: 990px) {
+  div.ical-right {
+    display: none;
+  }
+
+  div.bottom-links {
+    display: flex;
+  }
+}
+
+div.ical-right-link {
+  padding-bottom: 5px;
+}
+
+/* result page */
+div.rslt-middle {
+}
+
+div.rslt-middle-left {
+  width: 655px;
+  float: left;
+  padding-right: 15px;
+}
+
+div.rslt-middle-right {
+  float: left;
+}
+
+@media only screen and (min-width: 768px) {
+  div.rslt-middle-right {
+    width: 89px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  div.rslt-middle-right {
+    width: 280px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  div.rslt-middle-right {
+    width: 460px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  div.rslt-middle-right {
+    width: 640px;
+  }
+}
+
+div.rslt-bottom {
+  width: 655px;
+  padding-right: 15px;
+  text-align: center;
+}
+
+div.rslt-download-option {
+  border: 1px solid #d3d3d3;
+  /*margin-top: 15px;*/
+  padding-left: 15px;
+  padding-bottom: 14px;
+}
+
+p.show-on-alert {
+  display: none;
+  margin-bottom: 0px;
+}
+
+div.input-note {
+  margin-left: 135px;
+  font-size: 0.7em;
+  margin-top: 2px;
+}
+
+input.event-input, textarea.event-input, select.event-input {
+  padding: 3px 3px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+div.edit-allday-yesno {
+  display: inline-block;
+}
+
+
+input#option-feedTitle {
+  font-size: 20px;
+}
+
+input.redborder {
+  border-color: #fd1717;
+}
+
+label.event-label {
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+
+a#clear-selections, a#clear-selections:visited {
+  color: blue;
+}
+
+/* Overriding how buttonset shows the radio button circle icon. Hiding it.*/
+span.ui-checkboxradio-icon {
+  display: none;
+}
+
+select.ui-datepicker-month, select.ui-datepicker-year {
+  background-color: #fff;
+}
+
+
+/* for validation error */
+input.error {
+  background: #FFFF80 !important;
+}
+
+ul.how-to-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+  ul.how-to-ul li {
+    padding-top: 5px;
+    padding-left: 1em;
+    text-indent: -.7em;
+  }
+
+  ul.how-to-ul b {
+    color: #454545;
+  }
+
+div.event-recurring {
+  clear: both;
+  margin-left: 94px;
+  padding-top: 2px;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+  div.event-recurring > span {
+    padding-left: 3px;
+  }
+
+div.ui-dialog-content {
+  font-size: 1.0rem;
+}
+
+/*Recurring Form*/
+table.recurring-form-table td {
+  padding: 5px;
+}
+
+  table.recurring-form-table td.rec-repeat-ends {
+    vertical-align: top;
+  }
+
+select#repEvery {
+  margin-right: 10px;
+}
+
+input#repEndsAfter {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+input#repEndsOn {
+  margin-left: 10px;
+}
+
+input[name='repEnds'] {
+  margin-bottom: 15px;
+}
+
+label.repWeekDay {
+  margin-right: 5px;
+}
+
+
+
+form#repeatForm input[type='checkbox'] {
+  transform: scale(1.3);
+}
+
+form#repeatForm input[type='radio'] {
+  transform: scale(1.2);
+}
+
+a.show-repeat-dialog, a.remove-repeat {
+  color: blue;
+}
+
+span#event-repeat-summary-action-empty, span#event-repeat-summary-action-edit {
+  font-size: 0.9em;
+}
+
+span#event-repeat-summary-action-edit {
+  white-space: nowrap;
+}
+
+a#show-repeat-dlg-edit, a#show-repeat-dlg-remove {
+  padding-left: 3px;
+}
+
+.material-icons.repeat-green {
+  color: #92d050;
+  font-weight: bold;
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.ui-dialog {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 7px 7px;
+}
+
+
+li.more-item {
+  display: none;
+}
+
+/*Ad Block Box*/
+
+div.adblock-box {
+  margin-top: 5px;
+  border: 5px solid rgb(var(--bs-danger-rgb));
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+  line-height: 1.3em;
+  display: none;
+}
+
+/*Instruction Box*/
+
+div.instruction-box {
+  margin-top: 5px;
+  border: 5px solid #f4f6f8;
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+  line-height: 1.3em;
+}
+
+  div.instruction-box p {
+    margin-bottom: 0px;
+    margin-top: 8px;
+  }
+
+li#instruction-showmore {
+  margin-left: 20px;
+}
+
+/* start message styles */
+div.start-message {
+  color: #606060;
+}
+
+  div.start-message img {
+    width: 150px;
+    margin-left: 80px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+span.click-message {
+  margin-left: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: darkgray;
+  vertical-align: bottom;
+}
+
+@media only screen and (max-width: 620px) {
+  div.start-message img {
+    width: 80px;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  span.click-message {
+    margin-left: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: darkgray;
+    vertical-align: bottom;
+  }
+}
+
+
+
+div.start-message-txt {
+  margin-left: 20px;
+  margin-top: 40px;
+  font-size: 1.1em;
+  line-height: 2;
+}
+
+td.cookie-consent-name {
+  width: 220px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+
+td.cookie-consent-choice {
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+
+div.showmore-item {
+  display: none;
+}
+
+div#dlg-action-create-repeat label {
+  width: 100px;
+  min-width: 100px;
+  margin-top: 0.5rem;
+}
+
+
+/*----------------------------------------------------
+-    DatePicker custome style
+-    https://github.com/qodesmith/datepicker  
+----------------------------------------------------*/
+
+div.qs-datepicker-container {
+  font-size: 1.3rem;
+}
+
+div.qs-controls {
+  background: #f8f8f8;
+}
+
+div.qs-day {
+  font-weight: 500;
+}

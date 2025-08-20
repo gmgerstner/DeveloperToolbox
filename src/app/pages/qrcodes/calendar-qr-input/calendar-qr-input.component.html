@@ -1,0 +1,233 @@
+<div class="card">
+  <div class="card-header">Calendar Event</div>
+  <div class="card-body">
+
+    <form id="eventForm" novalidate="novalidate">
+
+      <div class="form-group row mb-2">
+        <label for="summary" class="col-2 col-form-label ical-form-label">Event Title<span class="req-field">*</span></label>
+        <div class="col-10">
+          <input type="text" class="form-control required" id="summary" name="summary" size="40">
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="allDayYes" class="col-2 col-form-label ical-form-label">All Day</label>
+        <div class="col-10 pt-2">
+          <input type="radio" id="allDayYes" name="dateType" class="ms-1"><div class="edit-allday-yesno ms-1">Yes</div>
+          <input type="radio" id="allDayNo" name="dateType" checked="checked" class="ms-2"><div class="edit-allday-yesno ms-1">No</div>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="dateStart" class="col-2 col-form-label ical-form-label">Date<span class="req-field">*</span></label>
+        <div class="col-10" style="position: relative;">
+          <input type="text" class="form-control required ical-date" id="dateStart" name="dateStart" maxlength="10" size="12" readonly="">
+          <!--<mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>-->
+          <select name="dateStartHour" id="dateStartHour" class="form-select ical-hour ">
+            <option value="00">00 (12am)</option>
+            <option value="01">01 (1am)</option>
+            <option value="02">02 (2am)</option>
+            <option value="03">03 (3am)</option>
+            <option value="04">04 (4am)</option>
+            <option value="05">05 (5am)</option>
+            <option value="06">06 (6am)</option>
+            <option value="07">07 (7am)</option>
+            <option value="08">08 (8am)</option>
+            <option value="09">09 (9am)</option>
+            <option value="10">10 (10am)</option>
+            <option value="11">11 (11am)</option>
+            <option value="12">12 (12pm)</option>
+            <option value="13">13 (1pm)</option>
+            <option value="14">14 (2pm)</option>
+            <option value="15">15 (3pm)</option>
+            <option value="16">16 (4pm)</option>
+            <option value="17">17 (5pm)</option>
+            <option value="18">18 (6pm)</option>
+            <option value="19">19 (7pm)</option>
+            <option value="20">20 (8pm)</option>
+            <option value="21">21 (9pm)</option>
+            <option value="22">22 (10pm)</option>
+            <option value="23">23 (11pm)</option>
+          </select>
+          <select name="dateStartMin" id="dateStartMin" class="form-select ical-time">
+            <option value="00">00</option>
+            <option value="05">05</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+            <option value="55">55</option>
+          </select>
+
+
+          <!--<div class="qs-datepicker-container qs-hidden" style="top: 38px; left: 12px;">
+    <div class="qs-datepicker">
+      <div class="qs-controls"><div class="qs-arrow qs-left"></div><div class="qs-month-year"><span class="qs-month">February</span><span class="qs-year">2023</span></div><div class="qs-arrow qs-right"></div></div><div class="qs-squares"><div class="qs-square qs-day">Sun</div><div class="qs-square qs-day">Mon</div><div class="qs-square qs-day">Tue</div><div class="qs-square qs-day">Wed</div><div class="qs-square qs-day">Thu</div><div class="qs-square qs-day">Fri</div><div class="qs-square qs-day">Sat</div><div class="qs-square Sun qs-outside-current-month qs-empty" data-direction="-1"></div><div class="qs-square Mon qs-outside-current-month qs-empty" data-direction="-1"></div><div class="qs-square Tue qs-outside-current-month qs-empty" data-direction="-1"></div><div class="qs-square Wed qs-num" data-direction="0">1</div><div class="qs-square Thu qs-num" data-direction="0">2</div><div class="qs-square Fri qs-num" data-direction="0">3</div><div class="qs-square Sat qs-num qs-current" data-direction="0">4</div><div class="qs-square Sun qs-num" data-direction="0">5</div><div class="qs-square Mon qs-num" data-direction="0">6</div><div class="qs-square Tue qs-num" data-direction="0">7</div><div class="qs-square Wed qs-num" data-direction="0">8</div><div class="qs-square Thu qs-num" data-direction="0">9</div><div class="qs-square Fri qs-num" data-direction="0">10</div><div class="qs-square Sat qs-num" data-direction="0">11</div><div class="qs-square Sun qs-num" data-direction="0">12</div><div class="qs-square Mon qs-num" data-direction="0">13</div><div class="qs-square Tue qs-num" data-direction="0">14</div><div class="qs-square Wed qs-num" data-direction="0">15</div><div class="qs-square Thu qs-num" data-direction="0">16</div><div class="qs-square Fri qs-num" data-direction="0">17</div><div class="qs-square Sat qs-num" data-direction="0">18</div><div class="qs-square Sun qs-num" data-direction="0">19</div><div class="qs-square Mon qs-num" data-direction="0">20</div><div class="qs-square Tue qs-num" data-direction="0">21</div><div class="qs-square Wed qs-num" data-direction="0">22</div><div class="qs-square Thu qs-num" data-direction="0">23</div><div class="qs-square Fri qs-num" data-direction="0">24</div><div class="qs-square Sat qs-num" data-direction="0">25</div><div class="qs-square Sun qs-num" data-direction="0">26</div><div class="qs-square Mon qs-num" data-direction="0">27</div><div class="qs-square Tue qs-num" data-direction="0">28</div><div class="qs-square Wed qs-outside-current-month qs-empty" data-direction="1"></div><div class="qs-square Thu qs-outside-current-month qs-empty" data-direction="1"></div><div class="qs-square Fri qs-outside-current-month qs-empty" data-direction="1"></div><div class="qs-square Sat qs-outside-current-month qs-empty" data-direction="1"></div></div><div class="qs-overlay qs-hidden">
+        <div>
+          <input class="qs-overlay-year" placeholder="4-digit year" inputmode="numeric"><div class="qs-close">✕</div>
+        </div>
+        <div class="qs-overlay-month-container">
+          <div class="qs-overlay-month" data-month-num="0">Jan</div>
+          <div class="qs-overlay-month" data-month-num="1">Feb</div>
+          <div class="qs-overlay-month" data-month-num="2">Mar</div>
+          <div class="qs-overlay-month" data-month-num="3">Apr</div>
+          <div class="qs-overlay-month" data-month-num="4">May</div>
+          <div class="qs-overlay-month" data-month-num="5">Jun</div>
+          <div class="qs-overlay-month" data-month-num="6">Jul</div>
+          <div class="qs-overlay-month" data-month-num="7">Aug</div>
+          <div class="qs-overlay-month" data-month-num="8">Sep</div>
+          <div class="qs-overlay-month" data-month-num="9">Oct</div>
+          <div class="qs-overlay-month" data-month-num="10">Nov</div>
+          <div class="qs-overlay-month" data-month-num="11">Dec</div>
+        </div>
+        <div class="qs-submit qs-disabled">Submit</div>
+      </div>
+    </div>
+  </div>-->
+
+
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="dateEnd" class="col-2 col-form-label ical-form-label">Date End</label>
+        <div class="col-10" style="position: relative;">
+          <input type="text" class="form-control ical-date required" id="dateEnd" name="dateEnd" maxlength="10" size="12" readonly="">
+          <select name="dateEndHour" id="dateEndHour" class="form-select ical-hour">
+            <option value="00">00 (12am)</option>
+            <option value="01">01 (1am)</option>
+            <option value="02">02 (2am)</option>
+            <option value="03">03 (3am)</option>
+            <option value="04">04 (4am)</option>
+            <option value="05">05 (5am)</option>
+            <option value="06">06 (6am)</option>
+            <option value="07">07 (7am)</option>
+            <option value="08">08 (8am)</option>
+            <option value="09">09 (9am)</option>
+            <option value="10">10 (10am)</option>
+            <option value="11">11 (11am)</option>
+            <option value="12">12 (12pm)</option>
+            <option value="13">13 (1pm)</option>
+            <option value="14">14 (2pm)</option>
+            <option value="15">15 (3pm)</option>
+            <option value="16">16 (4pm)</option>
+            <option value="17">17 (5pm)</option>
+            <option value="18">18 (6pm)</option>
+            <option value="19">19 (7pm)</option>
+            <option value="20">20 (8pm)</option>
+            <option value="21">21 (9pm)</option>
+            <option value="22">22 (10pm)</option>
+            <option value="23">23 (11pm)</option>
+          </select>
+          <select name="dateEndMin" id="dateEndMin" class="form-select ical-time">
+            <option value="00">00</option>
+            <option value="05">05</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+            <option value="55">55</option>
+          </select>
+
+          <!--
+          <div class="qs-datepicker-container qs-hidden">
+            <div class="qs-datepicker">
+              <div class="qs-controls">
+                <div class="qs-arrow qs-left"></div>
+                <div class="qs-month-year">
+                  <span class="qs-month">February</span><span class="qs-year">2023</span>
+                </div>
+                <div class="qs-arrow qs-right"></div>
+              </div>
+              <div class="qs-squares">
+                <div class="qs-square qs-day">Sun</div>
+                <div class="qs-square qs-day">Mon</div><div class="qs-square qs-day">Tue</div><div class="qs-square qs-day">Wed</div><div class="qs-square qs-day">Thu</div><div class="qs-square qs-day">Fri</div><div class="qs-square qs-day">Sat</div><div class="qs-square Sun qs-outside-current-month qs-empty" data-direction="-1"></div><div class="qs-square Mon qs-outside-current-month qs-empty" data-direction="-1"></div><div class="qs-square Tue qs-outside-current-month qs-empty" data-direction="-1"></div><div class="qs-square Wed qs-num" data-direction="0">1</div><div class="qs-square Thu qs-num" data-direction="0">2</div><div class="qs-square Fri qs-num" data-direction="0">3</div><div class="qs-square Sat qs-num qs-current" data-direction="0">4</div><div class="qs-square Sun qs-num" data-direction="0">5</div><div class="qs-square Mon qs-num" data-direction="0">6</div><div class="qs-square Tue qs-num" data-direction="0">7</div><div class="qs-square Wed qs-num" data-direction="0">8</div><div class="qs-square Thu qs-num" data-direction="0">9</div><div class="qs-square Fri qs-num" data-direction="0">10</div><div class="qs-square Sat qs-num" data-direction="0">11</div><div class="qs-square Sun qs-num" data-direction="0">12</div><div class="qs-square Mon qs-num" data-direction="0">13</div><div class="qs-square Tue qs-num" data-direction="0">14</div><div class="qs-square Wed qs-num" data-direction="0">15</div><div class="qs-square Thu qs-num" data-direction="0">16</div><div class="qs-square Fri qs-num" data-direction="0">17</div><div class="qs-square Sat qs-num" data-direction="0">18</div><div class="qs-square Sun qs-num" data-direction="0">19</div><div class="qs-square Mon qs-num" data-direction="0">20</div><div class="qs-square Tue qs-num" data-direction="0">21</div><div class="qs-square Wed qs-num" data-direction="0">22</div><div class="qs-square Thu qs-num" data-direction="0">23</div><div class="qs-square Fri qs-num" data-direction="0">24</div><div class="qs-square Sat qs-num" data-direction="0">25</div><div class="qs-square Sun qs-num" data-direction="0">26</div><div class="qs-square Mon qs-num" data-direction="0">27</div><div class="qs-square Tue qs-num" data-direction="0">28</div><div class="qs-square Wed qs-outside-current-month qs-empty" data-direction="1"></div><div class="qs-square Thu qs-outside-current-month qs-empty" data-direction="1"></div><div class="qs-square Fri qs-outside-current-month qs-empty" data-direction="1"></div><div class="qs-square Sat qs-outside-current-month qs-empty" data-direction="1"></div>
+              </div><div class="qs-overlay qs-hidden">
+                <div>
+                  <input class="qs-overlay-year" placeholder="4-digit year" inputmode="numeric">
+                  <div class="qs-close">✕</div>
+                </div>
+                <div class="qs-overlay-month-container">
+                  <div class="qs-overlay-month" data-month-num="0">Jan</div>
+                  <div class="qs-overlay-month" data-month-num="1">Feb</div>
+                  <div class="qs-overlay-month" data-month-num="2">Mar</div>
+                  <div class="qs-overlay-month" data-month-num="3">Apr</div>
+                  <div class="qs-overlay-month" data-month-num="4">May</div>
+                  <div class="qs-overlay-month" data-month-num="5">Jun</div>
+                  <div class="qs-overlay-month" data-month-num="6">Jul</div>
+                  <div class="qs-overlay-month" data-month-num="7">Aug</div>
+                  <div class="qs-overlay-month" data-month-num="8">Sep</div>
+                  <div class="qs-overlay-month" data-month-num="9">Oct</div>
+                  <div class="qs-overlay-month" data-month-num="10">Nov</div>
+                  <div class="qs-overlay-month" data-month-num="11">Dec</div>
+                </div>
+                <div class="qs-submit qs-disabled">Submit</div>
+              </div>
+            </div>
+          </div>
+          -->
+
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-2 col-form-label ical-form-label">
+          <span class="text-success">
+            <!--<svg class="bi" width="24" height="24"><use xlink:href="/data/bootstrap-icons.svg#arrow-repeat"></use></svg>-->
+          </span>
+        </label>
+        <div class="col-10 pt-2">
+          <span id="event-repeat-summary"></span>
+          <span id="event-repeat-summary-action-empty" style="display: inline;">
+            <a href="#" class="show-repeat-dialog" id="show-repeat-dlg-add">Repeats</a>
+          </span>
+          <span id="event-repeat-summary-action-edit" style="display: none;">
+            <a href="#" class="show-repeat-dialog" id="show-repeat-dlg-edit">Edit</a>
+            <a href="#" class="remove-repeat" id="show-repeat-dlg-remove">Remove</a>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="description" class="col-2 col-form-label ical-form-label">Description</label>
+        <div class="col-10">
+          <textarea rows="3" cols="36" class="form-control" id="description" name="description"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="location" class="col-2 col-form-label ical-form-label">Location</label>
+        <div class="col-10">
+          <input type="text" class="form-control" id="location" name="location" size="40">
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label for="inputUrl" class="col-2 col-form-label ical-form-label">URL</label>
+        <div class="col-10">
+          <input type="text" class="form-control" id="inputUrl" name="inputUrl" size="40" autocapitalize="off">
+          <small id="emailHelp" class="form-text text-muted">Note: Not all calendars supports URL</small>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>

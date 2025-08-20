@@ -1,0 +1,59 @@
+<div class="container-fluid mb-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">Developer Toolbox</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="data-parser">Data Parser</a>
+          </li>
+          <!--https://codebeautify.org/calculate-string-length-->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="string-length">String Length</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="string-builder">String Builder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="string-encoder">String Encode/Decode</a>
+          </li>
+          <!--http://asdfast.beobit.net/docs/-->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="lorem-ipsum">Lorem Ipsum</a>
+          </li>
+          <!--https://www.programmertools.online/generator/qrcode.html-->
+          <!--https://www.npmjs.com/package/qrcode-->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="qr-codes">QR Codes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="guid-generator">GUID Generator</a>
+          </li>
+          <!--see also:
+                  https://www.browserling.com/tools
+                  https://coding.tools
+
+          -->
+          <!--<li class="nav-item">
+            <a class="nav-link" routerLink="/bootstrap-forms">Bootstrap Forms</a>
+          </li>-->
+          <!--<li class="nav-item">
+            <a class="nav-link" href="https://magicrings.org//PDF/Intro%20to%20Rings%20v1.6.pdf" target="_blank">Help</a>
+          </li>-->
+          <!--<li *ngIf="api.getCredentials().token == ''" class="nav-item">
+            <a class="nav-link" href="login">Login/Register</a>
+          </li>-->
+        </ul>
+        <!--<div *ngIf="api.getCredentials().token != ''" class="d-flex">
+          <div class="">
+            Hello, {{api.getCredentials().given_name}} {{api.getCredentials().family_name}}!
+            <button type="button" class="btn btn-outline-success ms-2" (click)="logout()">Logout</button>
+          </div>
+        </div>-->
+      </div>
+    </div>
+  </nav>
+</div>
