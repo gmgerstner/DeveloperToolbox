@@ -39,6 +39,8 @@ jobs:
           ls -la dist/developer-toolbox-ui/
           echo "Checking for index.html:"
           find dist/ -name "index.html" -exec ls -la {} \;
+          echo "Checking base href in index.html:"
+          cat dist/developer-toolbox-ui/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
