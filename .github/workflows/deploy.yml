@@ -31,13 +31,22 @@ jobs:
       - name: Build
         run: npm run build:prod
 
+      - name: List build output
+        run: |
+          echo "Contents of dist/:"
+          ls -la dist/
+          echo "Contents of dist/developer-toolbox-ui/:"
+          ls -la dist/developer-toolbox-ui/
+          echo "Checking for index.html:"
+          find dist/ -name "index.html" -exec ls -la {} \;
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist/developer-toolbox-ui'
+          path: 'dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
