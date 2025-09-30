@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'qr-codes', component: QRCodesComponent },
   { path: 'guid-generator', component: GUIDGeneratorComponent },
   { path: 'bootstrap-forms', component: BootstrapFormGeneratorComponent },
+  { path: 'relative-path', component: RelativePathComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: '**', component: MissingPageComponent },
 ];

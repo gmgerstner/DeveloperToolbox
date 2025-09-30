@@ -1,0 +1,21 @@
+.card-header {
+  background-color: grey;
+  color: white;
+}
+
+code {
+  background-color: #f4f4f4;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: #333;
+  font-size: 1rem;
+  display: block;
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
+small.text-muted {
+  color: #aaa !important;
+}

@@ -30,6 +30,7 @@ import { CalendarQrInputComponent } from './pages/qrcodes/calendar-qr-input/cale
 import { WiFiQrInputComponent } from './pages/qrcodes/wi-fi-qr-input/wi-fi-qr-input.component';
 import { BaseQrInputComponent } from './pages/qrcodes/base-qr-input/base-qr-input.component';
 import { BootstrapFormGeneratorComponent } from './pages/bootstrap-form-generator/bootstrap-form-generator.component';
+import { RelativePathComponent } from './pages/relative-path/relative-path.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { BootstrapFormGeneratorComponent } from './pages/bootstrap-form-generato
     CalendarQrInputComponent,
     WiFiQrInputComponent,
     BaseQrInputComponent,
-    BootstrapFormGeneratorComponent
+    BootstrapFormGeneratorComponent,
+    RelativePathComponent
   ],
   imports: [
     BrowserModule,
