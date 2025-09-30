@@ -10,6 +10,7 @@ import { StringBuilderComponent } from './pages/string-builder/string-builder.co
 import { StringEncoderComponent } from './pages/string-encoder/string-encoder.component';
 import { StringLengthComponent } from './pages/string-length/string-length.component';
 import { BootstrapFormGeneratorComponent } from './pages/bootstrap-form-generator/bootstrap-form-generator.component';
+import { RelativePathComponent } from './pages/relative-path/relative-path.component';
 
 const routes: Routes = [
   { path: 'data-parser', component: DataParserComponent },
