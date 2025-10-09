@@ -6,7 +6,8 @@
     "open": "ng build && ng serve --open",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --configuration production --base-href /DeveloperToolbox/",
+    "build:prod": "ng build --configuration production --base-href /DeveloperToolbox/ && npm run copy:404",
+    "copy:404": "node -e \"require('fs').copyFileSync('dist/developer-toolbox-ui/index.html', 'dist/developer-toolbox-ui/404.html')\"",
     "watch": "ng build --watch --configuration development"
   },
   "private": true,
