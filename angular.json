@@ -25,7 +25,13 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/web.config"
+              "src/web.config",
+              {
+                "glob": "index.html",
+                "input": "src",
+                "output": "/",
+                "rename": "404.html"
+              }
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
