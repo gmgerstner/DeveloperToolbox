@@ -22,6 +22,7 @@ export class RelativePathComponent implements OnInit {
       return;
     }
 
+    // Detect path separator
     const isUnix = this.firstPath.indexOf('/') > -1;
     const splitBy = isUnix ? '/' : '\\';
 
@@ -36,60 +37,48 @@ export class RelativePathComponent implements OnInit {
   }
 
   private parsePath(path: string, delimiter: string): string[] {
-    if (delimiter === '/') {
-      return path.split(/\/(.+)?/)[1]?.replace(/^\/|\/$/g, '').split('/') || [];
-    } else {
-      return path.split(/\\(.+)?/)[1]?.replace(/^\\|\\$/g, '').split('\\') || [];
-    }
+    // Normalize the path and split by delimiter
+    const normalized = path.replace(/^[A-Za-z]:/, '').replace(/^[\/\\]+/, '').replace(/[\/\\]+$/, '');
+    return normalized.split(new RegExp(`[${delimiter === '/' ? '/' : '\\\\'}]+`)).filter(part => part.length > 0);
   }
 
   private calcRelativePath(fromArray: string[], toArray: string[], splitBy: string): string {
-    let result = '';
-    let nonMatch = 0;
-    let upLevelCt = 0;
-    let thereWasAChange = false;
-
-    // Find common path and count differences
-    for (let index = 0; index < fromArray.length; index++) {
-      nonMatch = index;
-
-      if (toArray[index] && fromArray[index] === toArray[index] && !thereWasAChange) {
-        continue;
-      } else if (toArray[index] && fromArray[index] !== toArray[index] || (thereWasAChange && toArray[index])) {
-        thereWasAChange = true;
-
-        if (toArray.length - 1 !== index && fromArray.length - 1 !== index) {
-          upLevelCt++;
-        }
-        if (fromArray[index + 1]) {
-          // Add intermediate differences (these will be added to result later)
-        }
-      } else if ((toArray[index] && fromArray[index] !== toArray[index]) || !(index < toArray.length)) {
-        upLevelCt++;
+    // Find the common prefix length
+    let commonLength = 0;
+    const minLength = Math.min(fromArray.length, toArray.length);
+    
+    for (let i = 0; i < minLength; i++) {
+      if (fromArray[i] === toArray[i]) {
+        commonLength++;
+      } else {
+        break;
       }
     }
 
-    // Add parent directory references
-    for (let i = 0; i < upLevelCt; i++) {
+    // Calculate how many levels to go up
+    const upLevels = fromArray.length - commonLength;
+    
+    // Get the remaining path from target
+    const remainingPath = toArray.slice(commonLength);
+
+    // Build the relative path
+    let result = '';
+    
+    // Add ".." for each level up
+    for (let i = 0; i < upLevels; i++) {
       result += '..' + splitBy;
     }
-
-    // Add the remaining path from the target
-    const remainingPath = toArray.slice(nonMatch);
+    
+    // Add the remaining path
     if (remainingPath.length > 0) {
       result += remainingPath.join(splitBy);
     }
 
-    // Handle current directory notation
-    if (result && !result.startsWith('..')) {
-      result = '.' + splitBy + result;
-    } else if (!result) {
-      result = '.';
-    }
-
-    // Remove trailing separator
-    if (result.endsWith(splitBy) && result.length > 1) {
-      result = result.slice(0, -1);
+    // Handle edge cases
+    if (!result) {
+      result = '.'; // Same directory
+    } else if (result.endsWith(splitBy)) {
+      result = result.slice(0, -1); // Remove trailing separator
     }
 
     return result;
