@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-lorem-ipsum',
   templateUrl: './lorem-ipsum.component.html',
   styleUrls: ['./lorem-ipsum.component.css']

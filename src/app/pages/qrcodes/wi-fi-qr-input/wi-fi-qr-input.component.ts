@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseQrInputComponent } from '../base-qr-input/base-qr-input.component';
 
 @Component({
+  standalone: false,
   selector: 'app-wi-fi-qr-input',
   templateUrl: './wi-fi-qr-input.component.html',
   styleUrls: ['./wi-fi-qr-input.component.css']

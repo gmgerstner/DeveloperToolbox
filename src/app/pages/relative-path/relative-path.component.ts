@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-relative-path',
   templateUrl: './relative-path.component.html',
   styleUrls: ['./relative-path.component.css']

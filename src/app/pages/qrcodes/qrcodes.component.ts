@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as QRCode from 'qrcode';
 
 @Component({
+  standalone: false,
   selector: 'app-qrcodes',
   templateUrl: './qrcodes.component.html',
   styleUrls: ['./qrcodes.component.css']
@@ -15,10 +17,9 @@ export class QRCodesComponent implements OnInit {
   }
 
   drawCanvas(text: string) {
-    var QRCode = require('qrcode');
-    var canvas = document.getElementById('canvas');
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 
-    QRCode.toCanvas(canvas, text, { width: "350" }, function (error: any) {
+    QRCode.toCanvas(canvas, text, { width: 350 }, function (error: Error | null | undefined) {
       if (error) console.error(error);
       console.log('success!');
     });

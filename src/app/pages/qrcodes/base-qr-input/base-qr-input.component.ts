@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-base-qr-input',
   templateUrl: './base-qr-input.component.html',
   styleUrls: ['./base-qr-input.component.css']

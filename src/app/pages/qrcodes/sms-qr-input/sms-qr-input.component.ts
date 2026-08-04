@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseQrInputComponent } from '../base-qr-input/base-qr-input.component';
 
 @Component({
+  standalone: false,
   selector: 'app-sms-qr-input',
   templateUrl: './sms-qr-input.component.html',
   styleUrls: ['./sms-qr-input.component.css']

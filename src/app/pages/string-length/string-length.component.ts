@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-string-length',
   templateUrl: './string-length.component.html',
   styleUrls: ['./string-length.component.css']

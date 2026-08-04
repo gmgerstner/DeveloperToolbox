@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseQrInputComponent } from '../base-qr-input/base-qr-input.component';
 
 @Component({
+  standalone: false,
   selector: 'app-map-qr-input',
   templateUrl: './map-qr-input.component.html',
   styleUrls: ['./map-qr-input.component.css']

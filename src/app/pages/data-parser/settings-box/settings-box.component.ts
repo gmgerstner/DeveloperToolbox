@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-settings-box',
   templateUrl: './settings-box.component.html',
   styleUrls: ['./settings-box.component.css']

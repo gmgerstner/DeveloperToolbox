@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Settings } from './settings-box/settings-box.component';
 
 @Component({
+  standalone: false,
   selector: 'data-parser',
   templateUrl: './data-parser.component.html',
   styleUrls: ['./data-parser.component.css']

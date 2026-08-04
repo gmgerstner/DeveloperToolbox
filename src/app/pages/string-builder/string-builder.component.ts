@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-string-builder',
   templateUrl: './string-builder.component.html',
   styleUrls: ['./string-builder.component.css']

@@ -7,6 +7,7 @@ import { LineSorter } from './encoders/line-sorter';
 import { SHA512Encoder } from './encoders/sha512-encoder';
 
 @Component({
+  standalone: false,
   selector: 'app-string-encoder',
   templateUrl: './string-encoder.component.html',
   styleUrls: ['./string-encoder.component.css']

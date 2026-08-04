@@ -9,6 +9,7 @@ import { XmlParser } from '../parsers/xml-parser';
 import { Settings } from '../settings-box/settings-box.component';
 
 @Component({
+  standalone: false,
   selector: 'app-output-box',
   templateUrl: './output-box.component.html',
   styleUrls: ['./output-box.component.css']
