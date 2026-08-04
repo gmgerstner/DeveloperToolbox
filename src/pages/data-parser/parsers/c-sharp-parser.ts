@@ -1,23 +1,21 @@
 import type { Settings } from "../settings";
 
 export class CSharpParser {
-  parse(dataGrid: [any[]], settings: Settings): string {
+  parse(dataGrid: string[][], settings: Settings): string {
     //inits...
     let numRows = dataGrid.length;
     let headerNames: string[] = dataGrid[0];
-    let numColumns = headerNames.length;
-    let indent: string = settings.indentWith == 'spaces' ? '   ' : '\t';
-    let newLine: string = '\n';
+    const numColumns = headerNames.length;
 
-    if (!settings.includeWhiteSpace) {
-      newLine = '';
-      indent = '';
-    }
+    // Note: unlike the other converters, the render loop below hardcodes its
+    // indentation and line breaks, so the "Indent with" and "Include white
+    // space in output" settings do not affect C# output. That was already the
+    // case in the Angular version.
 
     if (!settings.firstRowHeader) {
-      let newFirstRow: any[] = [];
+      const newFirstRow: string[] = [];
       for (let i = 0; i < numColumns; i++) {
-        let title: any = 'field' + i;
+        const title: string = 'field' + i;
         newFirstRow.push(title);
       }
       dataGrid.unshift(newFirstRow);
@@ -38,7 +36,7 @@ export class CSharpParser {
     //begin render loop
     let xml: string = "List<row> rows = new List<row>\n{\n";
     for (let i = 1; i < numRows; i++) {
-      let row = dataGrid[i];
+      const row = dataGrid[i];
       xml += '   ' + "new row { ";
       for (let j = 0; j < numColumns; j++) {
         xml += headerNames[j] + '=';

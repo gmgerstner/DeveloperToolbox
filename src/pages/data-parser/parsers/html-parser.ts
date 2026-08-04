@@ -1,12 +1,12 @@
 import type { Settings } from "../settings";
 
 export class HtmlParser {
-  parse(dataGrid: [any[]], settings: Settings): string {
+  parse(dataGrid: string[][], settings: Settings): string {
     //inits...
     let outputText = "";
     let numRows = dataGrid.length;
     let headerNames: string[] = dataGrid[0];
-    let numColumns = headerNames.length;
+    const numColumns = headerNames.length;
     let indent: string = settings.indentWith == 'spaces' ? '   ' : '\t';
     let newLine: string = '\n';
 
@@ -16,9 +16,9 @@ export class HtmlParser {
     }
 
     if (!settings.firstRowHeader) {
-      let newFirstRow: any[] = [];
+      const newFirstRow: string[] = [];
       for (let i = 0; i < numColumns; i++) {
-        let title: any = 'field' + i;
+        const title: string = 'field' + i;
         newFirstRow.push(title);
       }
       dataGrid.unshift(newFirstRow);
@@ -42,7 +42,7 @@ export class HtmlParser {
     //thead
     outputText += indent + "<thead>" + newLine;
     for (let i = 0; i < 1; i++) {
-      let row = dataGrid[i];
+      const row = dataGrid[i];
       outputText += indent + indent + "<tr>" + newLine;
       for (let j = 0; j < numColumns; j++) {
         outputText += indent + indent + indent;
@@ -57,7 +57,7 @@ export class HtmlParser {
     //tbody
     outputText += indent + "<tbody>" + newLine;
     for (let i = 1; i < numRows; i++) {
-      let row = dataGrid[i];
+      const row = dataGrid[i];
       outputText += indent + indent + "<tr>" + newLine;
       for (let j = 0; j < numColumns; j++) {
         outputText += indent + indent + indent;

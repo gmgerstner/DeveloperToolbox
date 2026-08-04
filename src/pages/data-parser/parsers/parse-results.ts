@@ -1,5 +1,5 @@
 export class ParseResults {
-  dataGrid: [[]] = [[]];
+  dataGrid: string[][] = [[]];
   headerNames: string[] = [];
   headerTypes: string[] = [];
   errors: string = '';

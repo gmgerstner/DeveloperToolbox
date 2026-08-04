@@ -22,8 +22,7 @@ export default function OutputBox({ inputText, settings }: OutputBoxProps) {
   const parse = () => {
     //test for delimiter
     //count the number of commas
-    let RE = new RegExp('[^,]', 'gi');
-    const numCommas = inputText.replace(RE, '').length;
+    const numCommas = inputText.split(',').length - 1;
 
     //set delimiter
     let columnDelimiter = ',';
@@ -34,8 +33,7 @@ export default function OutputBox({ inputText, settings }: OutputBoxProps) {
       columnDelimiter = '\t';
     } else if (settings.delimiter === 'auto') {
       //count the number of tabs
-      RE = new RegExp('[^\t]', 'gi');
-      const numTabs = inputText.replace(RE, '').length;
+      const numTabs = inputText.split('\t').length - 1;
       if (numTabs > numCommas) {
         columnDelimiter = '\t';
       }

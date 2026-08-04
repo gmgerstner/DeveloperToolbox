@@ -1,12 +1,11 @@
 import type { Settings } from "../settings";
 
 export class XmlParser {
-  parse(dataGrid: [any[]], settings: Settings): string {
+  parse(dataGrid: string[][], settings: Settings): string {
     //inits...
-    let outputText = "";
     let numRows = dataGrid.length;
     let headerNames: string[] = dataGrid[0];
-    let numColumns = headerNames.length;
+    const numColumns = headerNames.length;
     let indent: string = settings.indentWith == 'spaces' ? '   ' : '\t';
     let newLine: string = '\n';
 
@@ -16,9 +15,9 @@ export class XmlParser {
     }
 
     if (!settings.firstRowHeader) {
-      let newFirstRow: any[] = [];
+      const newFirstRow: string[] = [];
       for (let i = 0; i < numColumns; i++) {
-        let title: any = 'field' + i;
+        const title: string = 'field' + i;
         newFirstRow.push(title);
       }
       dataGrid.unshift(newFirstRow);
@@ -37,9 +36,9 @@ export class XmlParser {
     }
 
     //begin render loop
-    outputText = "<rows>" + newLine;
+    let outputText = "<rows>" + newLine;
     for (let i = 1; i < numRows; i++) {
-      let row = dataGrid[i];
+      const row = dataGrid[i];
       outputText += indent + "<row ";
       for (let j = 0; j < numColumns; j++) {
         outputText += headerNames[j] + '=';

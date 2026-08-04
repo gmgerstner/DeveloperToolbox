@@ -2,7 +2,7 @@ import type { ParseResults } from "./parsers/parse-results";
 
 export class DataParserCommon {
 
-  isDecimal_re: RegExp = /^\s*(\+|-)?((\d+([,\.]\d+)?)|([,\.]\d+))\s*$/;
+  isDecimal_re: RegExp = /^\s*(\+|-)?((\d+([,.]\d+)?)|([,.]\d+))\s*$/;
 
   //---------------------------------------
   // UTILS
@@ -23,20 +23,15 @@ export class DataParserCommon {
 
   parse(input: string, headersIncluded: boolean, delimiterType: string, downcaseHeaders: boolean, upcaseHeaders: boolean, decimalSign: string): ParseResults {
 
-    let dataArray = [];
-
-    let errors = [];
-
     //test for delimiter
     //count the number of commas
     let RE = new RegExp("[^,]", "gi");
-    let numCommas = input.replace(RE, "").length;
+    const numCommas = input.replace(RE, "").length;
 
     //count the number of tabs
-    RE = new RegExp("[^\t]", "gi");
-    let numTabs = input.replace(RE, "").length;
+    const numTabs = input.split("\t").length - 1;
 
-    let rowDelimiter = "\n";
+    const rowDelimiter = "\n";
     //set delimiter
     let columnDelimiter = ",";
     if (numTabs > numCommas) {
@@ -64,7 +59,7 @@ export class DataParserCommon {
 
 
     // dataArray = jQuery.csv(columnDelimiter)(input);
-    dataArray = DataParserCommon.CSVToArray(input, columnDelimiter);
+    const dataArray = DataParserCommon.CSVToArray(input, columnDelimiter);
 
     //escape out any tabs or returns or new lines
     for (let i = dataArray.length - 1; i >= 0; i--) {
@@ -76,15 +71,13 @@ export class DataParserCommon {
     };
 
 
-    let headerNames = [];
-    let headerTypes = [];
-    let numColumns = dataArray[0].length;
-    let numRows = dataArray.length;
+    let headerNames: string[] = [];
+    const headerTypes: string[] = [];
+    const numColumns = dataArray[0].length;
     if (headersIncluded) {
 
       //remove header row
       headerNames = dataArray.splice(0, 1)[0];
-      numRows = dataArray.length;
 
     } else { //if no headerNames provided
 
@@ -110,13 +103,13 @@ export class DataParserCommon {
 
     //test all the rows for proper number of columns.
     for (let i = 0; i < dataArray.length; i++) {
-      let numValues = dataArray[i].length;
+      const numValues = dataArray[i].length;
       if (numValues != numColumns) { this.log("Error parsing row " + String(i) + ". Wrong number of columns.") };
     };
 
     //test columns for number data type
-    let numRowsToTest = dataArray.length;
-    let threshold = 0.9;
+    const numRowsToTest = dataArray.length;
+    const threshold = 0.9;
     for (let i = 0; i < headerNames.length; i++) {
       let numFloats = 0;
       let numInts = 0;
@@ -147,7 +140,7 @@ export class DataParserCommon {
       }
     }
 
-    let results: ParseResults =
+    const results: ParseResults =
     {
       dataGrid: dataArray,
       headerNames: headerNames,
@@ -162,7 +155,7 @@ export class DataParserCommon {
   //---------------------------------------
   // ERROR LOGGING
   //---------------------------------------
-  errorLog: any = [];
+  errorLog: string[] = [];
 
   resetLog(): void {
     this.errorLog = [];
@@ -194,13 +187,13 @@ export class DataParserCommon {
   // This will parse a delimited string into an array of
   // arrays. The default delimiter is the comma, but this
   // can be overriden in the second argument.
-  public static CSVToArray(strData: string, strDelimiter: string): any {
+  public static CSVToArray(strData: string, strDelimiter: string): string[][] {
     // Check to see if the delimiter is defined. If not,
     // then default to comma.
     strDelimiter = (strDelimiter || ",");
 
     // Create a regular expression to parse the CSV values.
-    let objPattern = new RegExp(
+    const objPattern = new RegExp(
       (
         // Delimiters.
         "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
@@ -217,19 +210,19 @@ export class DataParserCommon {
 
     // Create an array to hold our data. Give the array
     // a default empty first row.
-    let arrData: any = [[]];
+    const arrData: string[][] = [[]];
 
     // Create an array to hold our individual pattern
     // matching groups.
-    let arrMatches = null;
+    let arrMatches: RegExpExecArray | null;
 
 
     // Keep looping over the regular expression matches
     // until we can no longer find a match.
-    while (arrMatches = objPattern.exec(strData)) {
+    while ((arrMatches = objPattern.exec(strData)) !== null) {
 
       // Get the delimiter that was found.
-      let strMatchedDelimiter = arrMatches[1];
+      const strMatchedDelimiter = arrMatches[1];
 
       // Check to see if the given delimiter has a length
       // (is not the start of string) and if it matches
