@@ -417,7 +417,6 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-# Angular build output and cache
+# Vite build output and TypeScript build info
 /dist/
-/.angular/
-/out-tsc/
+*.tsbuildinfo

@@ -1,0 +1,5 @@
+/* Scoped by hand to `.wifi-qr`; the Angular component relied on view
+   encapsulation to keep this rule off the rest of the app. */
+.wifi-qr label {
+  color: black;
+}

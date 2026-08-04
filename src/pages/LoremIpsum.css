@@ -1,0 +1,5 @@
+/* Scoped by hand to `.lorem-ipsum`; the Angular component relied on view
+   encapsulation to keep these rules off the rest of the app. */
+.lorem-ipsum .card-header {
+  background-color: grey;
+}

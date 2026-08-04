@@ -1,0 +1,6 @@
+/* Scoped by hand to `.contact-qr`; the Angular component relied on view
+   encapsulation to keep these rules off the rest of the app. */
+.contact-qr label,
+.contact-qr h5 {
+  color: black;
+}

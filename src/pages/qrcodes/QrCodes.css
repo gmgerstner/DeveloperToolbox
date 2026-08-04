@@ -1,0 +1,7 @@
+/* Scoped by hand to `.qr-codes`; the Angular component relied on view
+   encapsulation to keep this rule off the rest of the app. */
+.qr-codes canvas {
+  height: 350px;
+  width: 350px;
+  background-color: grey;
+}

@@ -1,0 +1,5 @@
+/* Scoped by hand to `.data-parser`; the Angular input-box and output-box
+   components relied on view encapsulation for this rule. */
+.data-parser .card-header {
+  background-color: grey;
+}

@@ -1,0 +1,23 @@
+/* Scoped by hand to `.relative-path`; the Angular component relied on view
+   encapsulation to keep these rules off the rest of the app. */
+.relative-path .card-header {
+  background-color: grey;
+  color: white;
+}
+
+.relative-path code {
+  background-color: #f4f4f4;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: #333;
+  font-size: 1rem;
+  display: block;
+}
+
+.relative-path .card {
+  margin-bottom: 1rem;
+}
+
+.relative-path small.text-muted {
+  color: #aaa !important;
+}

@@ -1,0 +1,5 @@
+/* Scoped by hand to `.calendar-qr`; the Angular component relied on view
+   encapsulation to keep this rule off the rest of the app. */
+.calendar-qr.card {
+  color: black;
+}
