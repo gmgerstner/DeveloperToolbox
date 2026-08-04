@@ -1,8 +1,377 @@
+/* ==========================================================================
+   Developer Toolbox theme
+
+   A dark theme layered on top of Bootstrap 5.3's dark colour mode (switched on
+   by data-bs-theme="dark" in index.html). Everything here is expressed through
+   Bootstrap's own CSS variables where possible, so components pick the theme up
+   without per-component overrides.
+   ========================================================================== */
+
+:root {
+  /* Surface scale: the page, resting cards, and raised elements. */
+  --dt-bg: #0a0d14;
+  --dt-surface: #121722;
+  --dt-surface-raised: #1a2030;
+  --dt-surface-input: #0e131c;
+
+  /* Hairline borders instead of the solid grey blocks the app used to have. */
+  --dt-border: rgb(148 163 184 / 14%);
+  --dt-border-strong: rgb(148 163 184 / 26%);
+
+  /* Text. */
+  --dt-text: #e6e9f0;
+  --dt-text-muted: #949cb0;
+
+  /* Indigo -> violet accent. */
+  --dt-accent: #6366f1;
+  --dt-accent-hover: #7c7ff5;
+  --dt-accent-active: #5457e0;
+  --dt-accent-contrast: #ffffff;
+  --dt-accent-glow: rgb(99 102 241 / 35%);
+  --dt-gradient: linear-gradient(135deg, #818cf8 0%, #a78bfa 55%, #c084fc 100%);
+
+  --dt-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --dt-font-mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono",
+    "Cascadia Code", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+[data-bs-theme='dark'] {
+  --bs-body-bg: var(--dt-bg);
+  --bs-body-bg-rgb: 10, 13, 20;
+  --bs-body-color: var(--dt-text);
+  --bs-emphasis-color: #f6f7fb;
+  --bs-secondary-color: var(--dt-text-muted);
+  --bs-tertiary-color: var(--dt-text-muted);
+  --bs-border-color: var(--dt-border);
+  --bs-border-color-translucent: var(--dt-border);
+
+  --bs-primary: var(--dt-accent);
+  --bs-primary-rgb: 99, 102, 241;
+  --bs-primary-text-emphasis: #b3b6fb;
+  --bs-link-color: #a5b4fc;
+  --bs-link-color-rgb: 165, 180, 252;
+  --bs-link-hover-color: #c7d2fe;
+
+  --bs-border-radius: 0.625rem;
+  --bs-border-radius-sm: 0.45rem;
+  --bs-border-radius-lg: 0.9rem;
+  --bs-border-radius-xl: 1.15rem;
+
+  --bs-focus-ring-color: var(--dt-accent-glow);
+  --bs-focus-ring-width: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
 body {
-  background-color: black;
-  color: white;
+  background-color: var(--dt-bg);
+  color: var(--dt-text);
+  font-family: var(--dt-font-sans);
+  font-size: 0.975rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+
+  /* Soft accent wash behind the page so it does not read as flat black. */
+  background-image:
+    radial-gradient(60rem 32rem at 12% -10%, rgb(99 102 241 / 13%), transparent 65%),
+    radial-gradient(48rem 28rem at 92% 4%, rgb(168 85 247 / 9%), transparent 60%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--bs-emphasis-color);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+h1 { font-size: 1.95rem; }
+h3 { font-size: 1.4rem; }
+
+/* Standalone labels sit above their control, so give them a quieter,
+   form-label-ish treatment. */
+label {
+  color: var(--dt-text-muted);
+  font-size: 0.83rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.3rem;
+}
+
+.form-check-label {
+  color: var(--dt-text);
+  font-size: 0.9rem;
+  font-weight: 450;
+  margin-bottom: 0;
+}
+
+hr {
+  border-color: var(--dt-border);
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Navbar
+   -------------------------------------------------------------------------- */
+
+.navbar {
+  --bs-navbar-color: var(--dt-text-muted);
+  --bs-navbar-hover-color: var(--dt-text);
+  --bs-navbar-active-color: #ffffff;
+  --bs-navbar-toggler-border-color: var(--dt-border-strong);
+  --bs-navbar-toggler-focus-width: 3px;
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28230, 233, 240, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+  background-color: rgb(18 23 34 / 78%);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--dt-border);
+  border-radius: var(--bs-border-radius-lg);
+  padding-block: 0.55rem;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 4%) inset, 0 10px 30px rgb(0 0 0 / 35%);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.12rem;
+  letter-spacing: -0.02em;
+  background: var(--dt-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  opacity: 0.85;
+}
+
+.navbar .nav-link {
+  color: var(--dt-text-muted);
+  font-size: 0.895rem;
+  font-weight: 500;
+  padding-inline: 0.7rem;
+  border-radius: var(--bs-border-radius-sm);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: var(--dt-text);
+  background-color: rgb(148 163 184 / 10%);
+}
+
+/* Set by <NavLink> on the route currently being viewed. */
+.navbar .nav-link.active {
+  color: #ffffff;
+  background-color: rgb(99 102 241 / 18%);
+  box-shadow: inset 0 0 0 1px rgb(99 102 241 / 32%);
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px var(--dt-accent-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Cards
+   -------------------------------------------------------------------------- */
+
+.card {
+  --bs-card-bg: var(--dt-surface);
+  --bs-card-border-color: var(--dt-border);
+  --bs-card-cap-bg: transparent;
+  --bs-card-inner-border-radius: calc(var(--bs-border-radius-lg) - 1px);
+  border-radius: var(--bs-border-radius-lg);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 25%), 0 12px 28px rgb(0 0 0 / 22%);
 }
 
 .card-header {
-  color: black;
+  color: var(--bs-emphasis-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid var(--dt-border);
+  padding-block: 0.7rem;
+}
+
+/* The app uses `border-dark` on the data-parser cards purely to draw an
+   outline; keep it in step with the rest of the theme. */
+.card.border-dark {
+  --bs-card-border-color: var(--dt-border);
+}
+
+/* --------------------------------------------------------------------------
+   Forms
+   -------------------------------------------------------------------------- */
+
+.form-control,
+.form-select,
+select {
+  background-color: var(--dt-surface-input);
+  border-color: var(--dt-border-strong);
+  border-radius: var(--bs-border-radius-sm);
+  color: var(--dt-text);
+  font-size: 0.925rem;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control::placeholder {
+  color: rgb(148 163 184 / 55%);
+}
+
+.form-control:focus,
+.form-select:focus,
+select:focus {
+  background-color: var(--dt-surface-input);
+  border-color: var(--dt-accent);
+  box-shadow: 0 0 0 3px var(--dt-accent-glow);
+  color: var(--dt-text);
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: rgb(148 163 184 / 6%);
+  color: var(--dt-text);
+}
+
+/* Text that the tools produce or consume reads better in a mono face. */
+textarea.form-control {
+  font-family: var(--dt-font-mono);
+  font-size: 0.845rem;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.form-check-input {
+  background-color: var(--dt-surface-input);
+  border-color: var(--dt-border-strong);
+}
+
+.form-check-input:checked {
+  background-color: var(--dt-accent);
+  border-color: var(--dt-accent);
+}
+
+.form-check-input:focus {
+  border-color: var(--dt-accent);
+  box-shadow: 0 0 0 3px var(--dt-accent-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  --bs-btn-border-radius: var(--bs-border-radius-sm);
+  font-size: 0.885rem;
+  font-weight: 550;
+  letter-spacing: 0.005em;
+  padding: 0.45rem 0.95rem;
+  transition: transform 0.12s ease, background-color 0.15s ease,
+    border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 3px var(--dt-accent-glow);
+  outline: none;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--dt-accent);
+  --bs-btn-border-color: var(--dt-accent);
+  --bs-btn-color: var(--dt-accent-contrast);
+  --bs-btn-hover-bg: var(--dt-accent-hover);
+  --bs-btn-hover-border-color: var(--dt-accent-hover);
+  --bs-btn-hover-color: var(--dt-accent-contrast);
+  --bs-btn-active-bg: var(--dt-accent-active);
+  --bs-btn-active-border-color: var(--dt-accent-active);
+  --bs-btn-disabled-bg: rgb(99 102 241 / 45%);
+  --bs-btn-disabled-border-color: transparent;
+  --bs-btn-disabled-color: rgb(255 255 255 / 65%);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 6px 18px rgb(99 102 241 / 22%);
+}
+
+.btn-secondary {
+  --bs-btn-bg: rgb(148 163 184 / 12%);
+  --bs-btn-border-color: var(--dt-border-strong);
+  --bs-btn-color: var(--dt-text);
+  --bs-btn-hover-bg: rgb(148 163 184 / 20%);
+  --bs-btn-hover-border-color: var(--dt-border-strong);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-active-bg: rgb(148 163 184 / 26%);
+  --bs-btn-active-border-color: var(--dt-border-strong);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #a5b4fc;
+  --bs-btn-border-color: rgb(99 102 241 / 45%);
+  --bs-btn-hover-bg: var(--dt-accent);
+  --bs-btn-hover-border-color: var(--dt-accent);
+  --bs-btn-hover-color: var(--dt-accent-contrast);
+  --bs-btn-active-bg: var(--dt-accent-active);
+  --bs-btn-active-border-color: var(--dt-accent-active);
+}
+
+/* --------------------------------------------------------------------------
+   Tabs
+   -------------------------------------------------------------------------- */
+
+.nav-tabs {
+  --bs-nav-tabs-border-color: var(--dt-border);
+  --bs-nav-tabs-link-active-bg: var(--dt-surface);
+  --bs-nav-tabs-link-active-color: var(--bs-emphasis-color);
+  --bs-nav-tabs-link-active-border-color: var(--dt-border) var(--dt-border)
+    var(--dt-surface);
+  --bs-nav-link-color: var(--dt-text-muted);
+  --bs-nav-link-hover-color: var(--dt-text);
+  font-size: 0.895rem;
+}
+
+/* --------------------------------------------------------------------------
+   Code
+   -------------------------------------------------------------------------- */
+
+code {
+  font-family: var(--dt-font-mono);
+  color: #c7d2fe;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+footer {
+  border-top: 1px solid var(--dt-border) !important;
+  color: var(--dt-text-muted);
+  font-size: 0.845rem;
+}
+
+footer .text-muted {
+  color: var(--dt-text-muted) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Motion
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .navbar .nav-link,
+  .form-control,
+  .form-select,
+  select {
+    transition: none;
+  }
+
+  .btn:active {
+    transform: none;
+  }
 }

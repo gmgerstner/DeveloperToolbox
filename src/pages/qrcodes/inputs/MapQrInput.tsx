@@ -75,7 +75,7 @@ export default function MapQrInput({ onGenerate }: QrInputProps) {
           <div className="col">
             <button
               type="button"
-              className="mt-1 btn btn-success"
+              className="mt-1 btn btn-primary"
               onClick={() => onGenerate(content)}
             >
               Generate

@@ -1,5 +1,7 @@
-/* Scoped by hand to `.data-parser`; the Angular input-box and output-box
-   components relied on view encapsulation for this rule. */
-.data-parser .card-header {
-  background-color: grey;
+/* Scoped by hand to `.data-parser`; React has no equivalent of Angular's view
+   encapsulation. Card headers are themed globally now, so this only carries
+   layout tweaks specific to this page. */
+
+.data-parser .card {
+  height: 100%;
 }

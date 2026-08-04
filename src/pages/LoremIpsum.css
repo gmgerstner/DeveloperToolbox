@@ -1,5 +1,7 @@
-/* Scoped by hand to `.lorem-ipsum`; the Angular component relied on view
-   encapsulation to keep these rules off the rest of the app. */
-.lorem-ipsum .card-header {
-  background-color: grey;
+/* Scoped by hand to `.lorem-ipsum`; React has no equivalent of Angular's view
+   encapsulation. Card styling is themed globally now, so only the two-column
+   layout needs help here. */
+
+.lorem-ipsum .card {
+  height: 100%;
 }

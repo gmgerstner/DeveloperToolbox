@@ -112,7 +112,7 @@ export default function ContactInfoQrInput({ onGenerate }: QrInputProps) {
       <div className="row">
         <div className="col">
           <input className="form-control" type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} />
-          <button className="btn btn-success" type="button" onClick={() => setBirthday('')}>
+          <button className="btn btn-primary" type="button" onClick={() => setBirthday('')}>
             Clear
           </button>
         </div>

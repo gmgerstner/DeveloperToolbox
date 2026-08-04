@@ -1,6 +1,8 @@
-/* Scoped by hand to `.contact-qr`; the Angular component relied on view
-   encapsulation to keep these rules off the rest of the app. */
-.contact-qr label,
+/* Scoped by hand to `.contact-qr`; React has no equivalent of Angular's view
+   encapsulation. The old `color: black` overrides existed only because cards
+   were light while the page was black - the theme handles this now. */
+
 .contact-qr h5 {
-  color: black;
+  font-size: 0.95rem;
+  color: var(--bs-emphasis-color);
 }

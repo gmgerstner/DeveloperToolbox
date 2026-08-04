@@ -21,7 +21,7 @@ export default function GuidGenerator() {
       </div>
       <div className="row">
         <div className="col">
-          <button type="button" className="btn btn-success mb-1" onClick={generateGuids}>
+          <button type="button" className="btn btn-primary mb-1" onClick={generateGuids}>
             Generate GUIDs
           </button>
         </div>

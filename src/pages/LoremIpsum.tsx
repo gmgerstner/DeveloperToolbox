@@ -163,7 +163,7 @@ export default function LoremIpsum() {
           </div>
           <div className="row">
             <div className="col">
-              <button type="button" className="mt-1 btn btn-success" onClick={generateClicked}>
+              <button type="button" className="mt-1 btn btn-primary" onClick={generateClicked}>
                 Generate
               </button>
             </div>

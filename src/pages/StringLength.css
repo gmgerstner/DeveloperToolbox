@@ -1,0 +1,20 @@
+/* Scoped by hand to `.string-length`; React has no equivalent of Angular's
+   view encapsulation. */
+
+.string-length .stat-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  color: var(--bs-emphasis-color);
+  margin-bottom: 0;
+}
+
+.string-length .card-body h6 {
+  font-size: 0.78rem;
+  font-weight: 550;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dt-text-muted) !important;
+  margin-bottom: 0.35rem;
+}

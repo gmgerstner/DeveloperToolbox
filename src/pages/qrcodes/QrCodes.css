@@ -1,7 +1,16 @@
-/* Scoped by hand to `.qr-codes`; the Angular component relied on view
-   encapsulation to keep this rule off the rest of the app. */
+/* Scoped by hand to `.qr-codes`; React has no equivalent of Angular's view
+   encapsulation. */
+
 .qr-codes canvas {
   height: 350px;
   width: 350px;
-  background-color: grey;
+  max-width: 100%;
+
+  /* A light plate behind the code: QR readers need the quiet zone to stay
+     light, and it doubles as the "empty" state before anything is generated. */
+  background-color: #ffffff;
+  border: 1px solid var(--dt-border);
+  border-radius: var(--bs-border-radius-lg);
+  padding: 0.5rem;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 30%);
 }

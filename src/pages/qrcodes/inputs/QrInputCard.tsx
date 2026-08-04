@@ -19,7 +19,7 @@ export default function QrInputCard({ title, className, children, onGenerate }: 
         {children}
         <div className="row">
           <div className="col">
-            <button type="button" className="mt-1 btn btn-success" onClick={onGenerate}>
+            <button type="button" className="mt-1 btn btn-primary" onClick={onGenerate}>
               Generate
             </button>
           </div>

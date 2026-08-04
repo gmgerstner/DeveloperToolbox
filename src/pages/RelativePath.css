@@ -1,23 +1,26 @@
-/* Scoped by hand to `.relative-path`; the Angular component relied on view
-   encapsulation to keep these rules off the rest of the app. */
-.relative-path .card-header {
-  background-color: grey;
-  color: white;
-}
-
-.relative-path code {
-  background-color: #f4f4f4;
-  padding: 0.5rem;
-  border-radius: 4px;
-  color: #333;
-  font-size: 1rem;
-  display: block;
-}
+/* Scoped by hand to `.relative-path`; React has no equivalent of Angular's
+   view encapsulation. */
 
 .relative-path .card {
   margin-bottom: 1rem;
 }
 
-.relative-path small.text-muted {
-  color: #aaa !important;
+/* Result cards are the payload of this tool, so give them an accent edge. */
+.relative-path .result-card {
+  border-color: rgb(99 102 241 / 40%);
+}
+
+.relative-path .result-card .card-header {
+  background-color: rgb(99 102 241 / 14%);
+  border-bottom-color: rgb(99 102 241 / 28%);
+}
+
+.relative-path code {
+  background-color: var(--dt-surface-input);
+  border: 1px solid var(--dt-border);
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--bs-border-radius-sm);
+  font-size: 0.9rem;
+  display: block;
+  overflow-wrap: anywhere;
 }

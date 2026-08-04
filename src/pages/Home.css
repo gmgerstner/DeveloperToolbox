@@ -1,0 +1,27 @@
+.home {
+  padding-block: 2rem 1rem;
+}
+
+.home-title {
+  font-size: clamp(2.1rem, 5vw, 3.1rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+  background: var(--dt-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.home-subtitle {
+  color: var(--dt-text-muted);
+  font-size: 1.03rem;
+  max-width: 38rem;
+  margin: 0 auto 2.25rem;
+}
+
+.home-image {
+  width: 100%;
+  max-width: 26rem;
+  height: auto;
+}

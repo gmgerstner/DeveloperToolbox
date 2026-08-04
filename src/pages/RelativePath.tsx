@@ -143,7 +143,7 @@ export default function RelativePath() {
       <div className="row mt-3">
         <div className="col text-center">
           <button
-            className="btn btn-success btn-lg me-2"
+            className="btn btn-primary btn-lg me-2"
             onClick={calculate}
             disabled={!firstPath || !secondPath}
           >
@@ -158,8 +158,8 @@ export default function RelativePath() {
       {showResults && (
         <div className="row mt-4">
           <div className="col-md-6">
-            <div className="card border-success">
-              <div className="card-header bg-success text-white">Result: From Path → To Path</div>
+            <div className="card result-card">
+              <div className="card-header">Result: From Path → To Path</div>
               <div className="card-body">
                 <div className="d-flex justify-content-between align-items-center">
                   <code className="flex-grow-1">{result1}</code>
@@ -175,8 +175,8 @@ export default function RelativePath() {
           </div>
 
           <div className="col-md-6">
-            <div className="card border-info">
-              <div className="card-header bg-info text-white">Result: To Path → From Path</div>
+            <div className="card result-card">
+              <div className="card-header">Result: To Path → From Path</div>
               <div className="card-body">
                 <div className="d-flex justify-content-between align-items-center">
                   <code className="flex-grow-1">{result2}</code>

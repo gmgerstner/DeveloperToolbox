@@ -1,5 +1,7 @@
-/* Scoped by hand to `.calendar-qr`; the Angular component relied on view
-   encapsulation to keep this rule off the rest of the app. */
-.calendar-qr.card {
-  color: black;
+/* Scoped by hand to `.calendar-qr`; React has no equivalent of Angular's view
+   encapsulation. The old `color: black` override existed only because cards
+   were light while the page was black - the theme handles this now. */
+
+.calendar-qr .ical-form-label {
+  padding-top: 0.45rem;
 }

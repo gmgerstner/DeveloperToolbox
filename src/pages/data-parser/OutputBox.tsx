@@ -66,7 +66,11 @@ export default function OutputBox({ inputText, settings }: OutputBoxProps) {
               <div className="form-group">
                 <div className="row p-0">
                   <div className="col-md-12 p-0 mb-1">
-                    <select value={converterType} onChange={(e) => setConverterType(e.target.value)}>
+                    <select
+                      className="form-select w-auto d-inline-block align-middle"
+                      value={converterType}
+                      onChange={(e) => setConverterType(e.target.value)}
+                    >
                       <option value="xml">XML</option>
                       <option value="sql-with-xml">SQL w/XML</option>
                       <option value="csharp">C#</option>

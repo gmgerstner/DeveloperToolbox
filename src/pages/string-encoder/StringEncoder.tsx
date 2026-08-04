@@ -113,13 +113,13 @@ export default function StringEncoder() {
           <div className="col"></div>
           <div className="col-auto text-right">
             <button
-              className="btn btn-success ms-1 mt-1"
+              className="btn btn-primary ms-1 mt-1"
               type="button"
               onClick={() => selectFile.current?.click()}
             >
               Load File
             </button>
-            <button className="btn btn-success ms-1 mt-1" type="button" onClick={() => setInput('')}>
+            <button className="btn btn-primary ms-1 mt-1" type="button" onClick={() => setInput('')}>
               Clear
             </button>
           </div>
@@ -136,13 +136,13 @@ export default function StringEncoder() {
         </div>
         <div className="row">
           <div className="col">
-            <button className="btn btn-success me-1 mt-1" onClick={() => download('file.txt', output)}>
+            <button className="btn btn-primary me-1 mt-1" onClick={() => download('file.txt', output)}>
               Save File
             </button>
           </div>
           <div className="col-auto text-right">
             <button
-              className="btn btn-success ms-1 mt-1 float-right"
+              className="btn btn-primary ms-1 mt-1 float-right"
               type="button"
               onClick={() => copyToClipboard(output, 'Output copied to clipboard')}
             >

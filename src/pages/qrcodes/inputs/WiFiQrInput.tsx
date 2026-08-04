@@ -64,13 +64,16 @@ export default function WiFiQrInput({ onGenerate }: QrInputProps) {
 
       <div className="row">
         <div className="col">
-          <input
-            type="checkbox"
-            checked={H}
-            onChange={(e) => setH(e.target.checked)}
-            className="form-checkbox me-1"
-          />
-          <label>Hidden</label>
+          <div className="form-check">
+            <input
+              type="checkbox"
+              id="wifi-hidden"
+              checked={H}
+              onChange={(e) => setH(e.target.checked)}
+              className="form-check-input"
+            />
+            <label className="form-check-label" htmlFor="wifi-hidden">Hidden</label>
+          </div>
         </div>
       </div>
 

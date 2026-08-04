@@ -28,22 +28,22 @@ export default function BootstrapFormGenerator() {
             <div className="tab-pane fade show active" id="textbox" role="tabpanel" aria-labelledby="textbox-tab">
               Input<br />
 
-              <button className="btn btn-success ms-1 mt-1" type="button">Add Component</button>
+              <button className="btn btn-primary ms-1 mt-1" type="button">Add Component</button>
             </div>
             <div className="tab-pane fade" id="options" role="tabpanel" aria-labelledby="options-tab">
               Options (Radio/Checkboxes)<br />
 
-              <button className="btn btn-success ms-1 mt-1" type="button">Add Component</button>
+              <button className="btn btn-primary ms-1 mt-1" type="button">Add Component</button>
             </div>
             <div className="tab-pane fade" id="dropdown" role="tabpanel" aria-labelledby="dropdown-tab">
               Dropdown<br />
 
-              <button className="btn btn-success ms-1 mt-1" type="button">Add Component</button>
+              <button className="btn btn-primary ms-1 mt-1" type="button">Add Component</button>
             </div>
             <div className="tab-pane fade" id="buttons" role="tabpanel" aria-labelledby="buttons-tab">
               Buttons<br />
 
-              <button className="btn btn-success ms-1 mt-1" type="button">Add Component</button>
+              <button className="btn btn-primary ms-1 mt-1" type="button">Add Component</button>
             </div>
           </div>
         </div>

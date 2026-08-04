@@ -1,5 +1,8 @@
-/* Scoped by hand to `.wifi-qr`; the Angular component relied on view
-   encapsulation to keep this rule off the rest of the app. */
-.wifi-qr label {
-  color: black;
+/* Scoped by hand to `.wifi-qr`; React has no equivalent of Angular's view
+   encapsulation. The old `color: black` override existed only because cards
+   were light while the page was black - the theme handles this now. */
+
+.wifi-qr .form-check-inline,
+.wifi-qr .row + .row {
+  margin-top: 0.15rem;
 }
