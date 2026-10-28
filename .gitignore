@@ -420,3 +420,4 @@ FodyWeavers.xsd
 # Vite build output and TypeScript build info
 /dist/
 *.tsbuildinfo
+/.phalanx
