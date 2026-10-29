@@ -4,7 +4,7 @@ import { copyToClipboard, download } from '../lib/browser-io';
 /**
  * Escapes special HTML characters in strings for safe attribute and content rendering.
  */
-export function escapeHtml(str: string): string {
+function escapeHtml(str: string): string {
   if (!str) return '';
   return str
     .replace(/&/g, '&amp;')
