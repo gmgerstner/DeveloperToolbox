@@ -47,6 +47,9 @@ export default function Toolbar() {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/relative-path">Relative Path</NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/regex-tester">Regex Tester</NavLink>
+              </li>
               {/* see also:
                     https://www.browserling.com/tools
                     https://coding.tools

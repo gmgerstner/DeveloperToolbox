@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import LoremIpsum from './pages/LoremIpsum';
 import MissingPage from './pages/MissingPage';
 import QrCodes from './pages/qrcodes/QrCodes';
+import RegexTester from './pages/RegexTester';
 import RelativePath from './pages/RelativePath';
 import StringBuilder from './pages/StringBuilder';
 import StringEncoder from './pages/string-encoder/StringEncoder';
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/guid-generator" element={<GuidGenerator />} />
             <Route path="/bootstrap-forms" element={<BootstrapFormGenerator />} />
             <Route path="/relative-path" element={<RelativePath />} />
+            <Route path="/regex-tester" element={<RegexTester />} />
             <Route path="*" element={<MissingPage />} />
           </Routes>
         </div>

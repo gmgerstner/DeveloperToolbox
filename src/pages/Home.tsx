@@ -153,6 +153,21 @@ const FEATURE_CARDS: FeatureCard[] = [
       </svg>
     ),
   },
+  {
+    id: 'regex-tester',
+    title: 'Regex Tester',
+    description: 'Test regular expressions with alternating match highlighting, capture group parsing, live replacements, multi-round chaining, and session save/load.',
+    path: '/regex-tester',
+    badge: 'Pattern Tool',
+    icon: (
+      <svg className="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" />
+        <path d="m9 9 4 4" />
+        <path d="m13 9-4 4" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Home() {
