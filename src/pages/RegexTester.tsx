@@ -25,6 +25,8 @@ const AVAILABLE_FLAGS = [
   { flag: 'u', label: 'u (Unicode)' },
 ] as const;
 
+const MAX_MATCHES = 1000;
+
 export default function RegexTester() {
   const [input, setInput] = useState('');
   const [pattern, setPattern] = useState('');
@@ -55,12 +57,13 @@ export default function RegexTester() {
     }
   }, [pattern, flags]);
 
-  const { matches, highlightedNodes, replacedOutput } = useMemo(() => {
+  const { matches, highlightedNodes, replacedOutput, isTruncated } = useMemo(() => {
     if (!regex || !input) {
       return {
         matches: [] as MatchInfo[],
         highlightedNodes: input ? [input] : ([] as ReactNode[]),
         replacedOutput: input,
+        isTruncated: false,
       };
     }
 
@@ -71,9 +74,15 @@ export default function RegexTester() {
 
     let lastCursor = 0;
     let matchCount = 0;
+    let truncated = false;
     let execResult: RegExpExecArray | null;
 
     while ((execResult = matchRegex.exec(input)) !== null) {
+      if (matchCount >= MAX_MATCHES) {
+        truncated = true;
+        break;
+      }
+
       const matchStart = execResult.index;
       const matchText = execResult[0];
       const matchEnd = matchStart + matchText.length;
@@ -89,13 +98,15 @@ export default function RegexTester() {
         nodes.push(input.slice(lastCursor, matchStart));
       }
 
-      const highlightClass =
-        matchCount % 2 === 0 ? 'regex-match-even' : 'regex-match-odd';
-      nodes.push(
-        <mark key={`match-${matchCount}-${matchStart}`} className={highlightClass}>
-          {matchText}
-        </mark>,
-      );
+      if (matchText.length > 0) {
+        const highlightClass =
+          matchCount % 2 === 0 ? 'regex-match-even' : 'regex-match-odd';
+        nodes.push(
+          <mark key={`match-${matchCount}-${matchStart}`} className={highlightClass}>
+            {matchText}
+          </mark>,
+        );
+      }
 
       lastCursor = matchEnd;
       matchCount++;
@@ -127,6 +138,7 @@ export default function RegexTester() {
       matches: foundMatches,
       highlightedNodes: nodes,
       replacedOutput: replaced,
+      isTruncated: truncated,
     };
   }, [regex, input, replacement]);
 
@@ -358,6 +370,11 @@ export default function RegexTester() {
             </div>
           </div>
           <div className="card-body">
+            {isTruncated && (
+              <div className="alert alert-info" role="alert">
+                Showing first {MAX_MATCHES} matches (results truncated to prevent browser freeze).
+              </div>
+            )}
             <div className="regex-highlight-box mb-3">
               {input ? (
                 highlightedNodes

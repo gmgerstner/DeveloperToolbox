@@ -188,21 +188,26 @@ export class DataParserCommon {
   // arrays. The default delimiter is the comma, but this
   // can be overriden in the second argument.
   public static CSVToArray(strData: string, strDelimiter: string): string[][] {
+    if (!strData) {
+      return [[]];
+    }
+
     // Check to see if the delimiter is defined. If not,
     // then default to comma.
     strDelimiter = (strDelimiter || ",");
+    const escapedDelimiter = strDelimiter.replace(/[.*+?^${}()|[\]\\]/g, (m) => "\\" + m);
 
     // Create a regular expression to parse the CSV values.
     const objPattern = new RegExp(
       (
         // Delimiters.
-        "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+        "(" + escapedDelimiter + "|\\r?\\n|\\r|^)" +
 
         // Quoted fields.
         "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
 
         // Standard fields.
-        "([^\"\\" + strDelimiter + "\\r\\n]*))"
+        "([^\"\\r\\n" + escapedDelimiter + "]*))"
       ),
       "gi"
     );
@@ -220,6 +225,9 @@ export class DataParserCommon {
     // Keep looping over the regular expression matches
     // until we can no longer find a match.
     while ((arrMatches = objPattern.exec(strData)) !== null) {
+      if (arrMatches[0].length === 0) {
+        objPattern.lastIndex++;
+      }
 
       // Get the delimiter that was found.
       const strMatchedDelimiter = arrMatches[1];
