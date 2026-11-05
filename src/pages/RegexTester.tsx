@@ -127,7 +127,7 @@ export default function RegexTester() {
       nodes.push(input.slice(lastCursor));
     }
 
-    let replaced = input;
+    let replaced: string;
     try {
       replaced = input.replace(regex, replacement);
     } catch {
