@@ -1,5 +1,6 @@
-import React, { useState, useId } from 'react';
+import React, { useId, useState } from 'react';
 import { copyToClipboard, download } from '../lib/browser-io';
+import { usePersistentState } from '../lib/persistent-state';
 
 /**
  * Escapes special HTML characters in strings for safe attribute and content rendering.
@@ -72,151 +73,153 @@ const DEFAULT_OPTIONS: FormFieldOption[] = [
   { id: 'opt-3', label: 'Option 3', value: 'opt3' }
 ];
 
+const DEFAULT_FIELDS: FormField[] = [
+  {
+    id: 'full-name',
+    name: 'fullName',
+    type: 'text',
+    label: 'Full Name',
+    placeholder: 'John Doe',
+    required: true,
+    colSize: '6',
+    helpText: 'Enter your legal first and last name.',
+    validationState: 'none',
+    validFeedback: 'Looks good!',
+    invalidFeedback: 'Please provide your full name.'
+  },
+  {
+    id: 'email-address',
+    name: 'email',
+    type: 'email',
+    label: 'Email Address',
+    placeholder: 'user@example.com',
+    required: true,
+    colSize: '6',
+    inputGroupPrefix: '@',
+    helpText: 'We will never share your email with third parties.',
+    validationState: 'none',
+    validFeedback: 'Valid email address format.',
+    invalidFeedback: 'Please enter a valid email address.'
+  },
+  {
+    id: 'password-input',
+    name: 'password',
+    type: 'password',
+    label: 'Account Password',
+    placeholder: '••••••••',
+    required: true,
+    colSize: '6',
+    helpText: 'Must be at least 8 characters with numbers and symbols.',
+    validationState: 'none'
+  },
+  {
+    id: 'phone-number',
+    name: 'phoneNumber',
+    type: 'tel',
+    label: 'Phone Number',
+    placeholder: '+1 (555) 000-0000',
+    required: false,
+    colSize: '6',
+    inputGroupPrefix: '📞',
+    validationState: 'none'
+  },
+  {
+    id: 'department-select',
+    name: 'department',
+    type: 'select',
+    label: 'Department',
+    required: true,
+    colSize: '6',
+    options: [
+      { id: 'dept-gen', label: 'General Inquiry', value: 'general' },
+      { id: 'dept-sup', label: 'Technical Support', value: 'support' },
+      { id: 'dept-bil', label: 'Billing & Accounts', value: 'billing' }
+    ],
+    defaultValue: 'general',
+    validationState: 'none'
+  },
+  {
+    id: 'experience-range',
+    name: 'experienceLevel',
+    type: 'range',
+    label: 'Experience Level (Years)',
+    min: 1,
+    max: 10,
+    step: 1,
+    defaultValue: '5',
+    colSize: '6',
+    helpText: 'Slide between 1 and 10 years of experience.',
+    validationState: 'none'
+  },
+  {
+    id: 'message-body',
+    name: 'message',
+    type: 'textarea',
+    label: 'Inquiry Details / Comments',
+    placeholder: 'Describe your request or question in detail...',
+    rows: 4,
+    required: true,
+    colSize: '12',
+    validationState: 'none',
+    validFeedback: 'Thank you for providing details.',
+    invalidFeedback: 'Please provide more details.'
+  },
+  {
+    id: 'attachment-file',
+    name: 'attachment',
+    type: 'file',
+    label: 'Attach Relevant Document',
+    colSize: '12',
+    helpText: 'Acceptable formats: PDF, DOCX, PNG (Max 10MB)',
+    validationState: 'none'
+  },
+  {
+    id: 'contact-pref',
+    name: 'contactPreference',
+    type: 'radio',
+    label: 'Preferred Contact Method',
+    colSize: '12',
+    options: [
+      { id: 'pref-email', label: 'Email', value: 'email' },
+      { id: 'pref-phone', label: 'Phone', value: 'phone' },
+      { id: 'pref-sms', label: 'SMS / Text Message', value: 'sms' }
+    ],
+    defaultValue: 'email',
+    validationState: 'none'
+  },
+  {
+    id: 'newsletter-switch',
+    name: 'newsletter',
+    type: 'switch',
+    label: 'Subscribe to weekly developer updates and security digests',
+    colSize: '12',
+    defaultValue: 'true',
+    validationState: 'none'
+  },
+  {
+    id: 'terms-agreement',
+    name: 'termsAgreed',
+    type: 'checkbox',
+    label: 'I accept and agree to the Terms of Service & Privacy Policy',
+    required: true,
+    colSize: '12',
+    validationState: 'none',
+    validFeedback: 'Agreement acknowledged.',
+    invalidFeedback: 'You must accept the terms before submitting.'
+  }
+];
+
 export default function BootstrapFormGenerator() {
   const baseId = useId();
-  const [layout, setLayout] = useState<FormLayout>('vertical');
-  const [formTitle, setFormTitle] = useState('Contact & Registration Form');
-  const [submitButtonText, setSubmitButtonText] = useState('Submit Form');
-  const [showResetButton, setShowResetButton] = useState(true);
-  const [activeTab, setActiveTab] = useState<'editor' | 'preview' | 'html'>('editor');
-  const [selectedFieldId, setSelectedFieldId] = useState<string | null>('full-name');
-  const [enableValidationScripts, setEnableValidationScripts] = useState(true);
+  const [layout, setLayout] = usePersistentState<FormLayout>('bootstrapForms.layout', 'vertical');
+  const [formTitle, setFormTitle] = usePersistentState('bootstrapForms.formTitle', 'Contact & Registration Form');
+  const [submitButtonText, setSubmitButtonText] = usePersistentState('bootstrapForms.submitButtonText', 'Submit Form');
+  const [showResetButton, setShowResetButton] = usePersistentState('bootstrapForms.showResetButton', true);
+  const [activeTab, setActiveTab] = usePersistentState<'editor' | 'preview' | 'html'>('bootstrapForms.activeTab', 'editor');
+  const [selectedFieldId, setSelectedFieldId] = usePersistentState<string | null>('bootstrapForms.selectedFieldId', 'full-name');
+  const [enableValidationScripts, setEnableValidationScripts] = usePersistentState('bootstrapForms.enableValidationScripts', true);
 
-  const [fields, setFields] = useState<FormField[]>([
-    {
-      id: 'full-name',
-      name: 'fullName',
-      type: 'text',
-      label: 'Full Name',
-      placeholder: 'John Doe',
-      required: true,
-      colSize: '6',
-      helpText: 'Enter your legal first and last name.',
-      validationState: 'none',
-      validFeedback: 'Looks good!',
-      invalidFeedback: 'Please provide your full name.'
-    },
-    {
-      id: 'email-address',
-      name: 'email',
-      type: 'email',
-      label: 'Email Address',
-      placeholder: 'user@example.com',
-      required: true,
-      colSize: '6',
-      inputGroupPrefix: '@',
-      helpText: 'We will never share your email with third parties.',
-      validationState: 'none',
-      validFeedback: 'Valid email address format.',
-      invalidFeedback: 'Please enter a valid email address.'
-    },
-    {
-      id: 'password-input',
-      name: 'password',
-      type: 'password',
-      label: 'Account Password',
-      placeholder: '••••••••',
-      required: true,
-      colSize: '6',
-      helpText: 'Must be at least 8 characters with numbers and symbols.',
-      validationState: 'none'
-    },
-    {
-      id: 'phone-number',
-      name: 'phoneNumber',
-      type: 'tel',
-      label: 'Phone Number',
-      placeholder: '+1 (555) 000-0000',
-      required: false,
-      colSize: '6',
-      inputGroupPrefix: '📞',
-      validationState: 'none'
-    },
-    {
-      id: 'department-select',
-      name: 'department',
-      type: 'select',
-      label: 'Department',
-      required: true,
-      colSize: '6',
-      options: [
-        { id: 'dept-gen', label: 'General Inquiry', value: 'general' },
-        { id: 'dept-sup', label: 'Technical Support', value: 'support' },
-        { id: 'dept-bil', label: 'Billing & Accounts', value: 'billing' }
-      ],
-      defaultValue: 'general',
-      validationState: 'none'
-    },
-    {
-      id: 'experience-range',
-      name: 'experienceLevel',
-      type: 'range',
-      label: 'Experience Level (Years)',
-      min: 1,
-      max: 10,
-      step: 1,
-      defaultValue: '5',
-      colSize: '6',
-      helpText: 'Slide between 1 and 10 years of experience.',
-      validationState: 'none'
-    },
-    {
-      id: 'message-body',
-      name: 'message',
-      type: 'textarea',
-      label: 'Inquiry Details / Comments',
-      placeholder: 'Describe your request or question in detail...',
-      rows: 4,
-      required: true,
-      colSize: '12',
-      validationState: 'none',
-      validFeedback: 'Thank you for providing details.',
-      invalidFeedback: 'Please provide more details.'
-    },
-    {
-      id: 'attachment-file',
-      name: 'attachment',
-      type: 'file',
-      label: 'Attach Relevant Document',
-      colSize: '12',
-      helpText: 'Acceptable formats: PDF, DOCX, PNG (Max 10MB)',
-      validationState: 'none'
-    },
-    {
-      id: 'contact-pref',
-      name: 'contactPreference',
-      type: 'radio',
-      label: 'Preferred Contact Method',
-      colSize: '12',
-      options: [
-        { id: 'pref-email', label: 'Email', value: 'email' },
-        { id: 'pref-phone', label: 'Phone', value: 'phone' },
-        { id: 'pref-sms', label: 'SMS / Text Message', value: 'sms' }
-      ],
-      defaultValue: 'email',
-      validationState: 'none'
-    },
-    {
-      id: 'newsletter-switch',
-      name: 'newsletter',
-      type: 'switch',
-      label: 'Subscribe to weekly developer updates and security digests',
-      colSize: '12',
-      defaultValue: 'true',
-      validationState: 'none'
-    },
-    {
-      id: 'terms-agreement',
-      name: 'termsAgreed',
-      type: 'checkbox',
-      label: 'I accept and agree to the Terms of Service & Privacy Policy',
-      required: true,
-      colSize: '12',
-      validationState: 'none',
-      validFeedback: 'Agreement acknowledged.',
-      invalidFeedback: 'You must accept the terms before submitting.'
-    }
-  ]);
+  const [fields, setFields] = usePersistentState<FormField[]>('bootstrapForms.fields', DEFAULT_FIELDS);
 
   const selectedField = fields.find((f) => f.id === selectedFieldId) || fields[0] || null;
 
@@ -563,13 +566,33 @@ export default function BootstrapFormGenerator() {
     download('bootstrap-form.html', generatedHtml);
   };
 
+  // Bumped on reset so the uncontrolled inputs in the live preview remount empty.
+  const [previewKey, setPreviewKey] = useState(0);
+
+  const handleReset = () => {
+    setLayout('vertical');
+    setFormTitle('Contact & Registration Form');
+    setSubmitButtonText('Submit Form');
+    setShowResetButton(true);
+    setActiveTab('editor');
+    setSelectedFieldId('full-name');
+    setEnableValidationScripts(true);
+    setFields(DEFAULT_FIELDS);
+    setPreviewKey((k) => k + 1);
+  };
+
   return (
     <div className="container-fluid py-4" id={baseId}>
-      <header className="mb-4 pb-2 border-bottom">
-        <h1 className="h3 fw-bold text-primary">Bootstrap Form Generator</h1>
-        <p className="text-muted mb-0">
-          Build accessible, responsive Bootstrap 5 forms with interactive field customization, live preview, grid layout, and HTML export.
-        </p>
+      <header className="mb-4 pb-2 border-bottom d-flex justify-content-between align-items-start gap-3">
+        <div>
+          <h1 className="h3 fw-bold text-primary">Bootstrap Form Generator</h1>
+          <p className="text-muted mb-0">
+            Build accessible, responsive Bootstrap 5 forms with interactive field customization, live preview, grid layout, and HTML export.
+          </p>
+        </div>
+        <button type="button" className="btn btn-secondary" onClick={handleReset}>
+          Reset
+        </button>
       </header>
 
       {/* Global Form Settings Bar */}
@@ -670,7 +693,7 @@ export default function BootstrapFormGenerator() {
       </ul>
 
       {/* Tab 1: Editor */}
-      {activeTab === 'editor' && (
+      <div className={activeTab === 'editor' ? '' : 'd-none'}>
         <div className="row g-4">
           {/* Field List Sidebar */}
           <div className="col-lg-5">
@@ -1083,17 +1106,17 @@ export default function BootstrapFormGenerator() {
             )}
           </div>
         </div>
-      )}
+      </div>
 
       {/* Tab 2: Live Preview */}
-      {activeTab === 'preview' && (
+      <div className={activeTab === 'preview' ? '' : 'd-none'}>
         <div className="card shadow-sm">
           <div className="card-header bg-white py-3 d-flex justify-content-between align-items-center">
             <span className="fw-bold">Live Form Render</span>
             <span className="badge bg-secondary">Bootstrap 5 Interactive Simulation</span>
           </div>
           <div className="card-body p-4">
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form key={previewKey} onSubmit={(e) => e.preventDefault()}>
               {formTitle && <h3 className="mb-4">{formTitle}</h3>}
               <div className="row g-3">
                 {fields.map((field) => {
@@ -1193,10 +1216,10 @@ export default function BootstrapFormGenerator() {
             </form>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Tab 3: Generated HTML */}
-      {activeTab === 'html' && (
+      <div className={activeTab === 'html' ? '' : 'd-none'}>
         <div className="card shadow-sm">
           <div className="card-header bg-white d-flex justify-content-between align-items-center py-3">
             <span className="fw-bold">Exportable HTML Code</span>
@@ -1219,7 +1242,7 @@ export default function BootstrapFormGenerator() {
             />
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 

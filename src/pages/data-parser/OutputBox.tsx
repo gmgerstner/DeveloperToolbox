@@ -1,6 +1,5 @@
-import { useState } from 'react';
-
 import { copyToClipboard } from '../../lib/browser-io';
+import { usePersistentState } from '../../lib/persistent-state';
 import { DataParserCommon } from './data-parser-common';
 import { CSharpParser } from './parsers/c-sharp-parser';
 import { HtmlParser } from './parsers/html-parser';
@@ -16,8 +15,8 @@ interface OutputBoxProps {
 }
 
 export default function OutputBox({ inputText, settings }: OutputBoxProps) {
-  const [converterType, setConverterType] = useState('xml');
-  const [outputText, setOutputText] = useState('');
+  const [converterType, setConverterType] = usePersistentState('dataParser.converterType', 'xml');
+  const [outputText, setOutputText] = usePersistentState('dataParser.outputText', '');
 
   const parse = () => {
     //test for delimiter

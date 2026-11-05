@@ -1,10 +1,9 @@
-import { useState } from 'react';
-
+import { usePersistentState } from '../../../lib/persistent-state';
 import QrInputCard from './QrInputCard';
 import type { QrInputProps } from './types';
 
 export default function TextQrInput({ onGenerate }: QrInputProps) {
-  const [content, setContent] = useState('');
+  const [content, setContent] = usePersistentState('qr.text.content', '');
 
   return (
     <QrInputCard title="Text" onGenerate={() => onGenerate(content)}>

@@ -1,20 +1,19 @@
-import { useState } from 'react';
-
+import { usePersistentState } from '../../../lib/persistent-state';
 import QrInputCard from './QrInputCard';
 import type { QrInputProps } from './types';
 import './ContactInfoQrInput.css';
 
 export default function ContactInfoQrInput({ onGenerate }: QrInputProps) {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [address, setAddress] = useState('');
-  const [website, setWebsite] = useState('');
-  const [organization, setOrganization] = useState('');
-  const [jobTitle, setJobTitle] = useState('');
-  const [workPhoneNumber, setWorkPhoneNumber] = useState('');
+  const [firstName, setFirstName] = usePersistentState('qr.contact.firstName', '');
+  const [lastName, setLastName] = usePersistentState('qr.contact.lastName', '');
+  const [phoneNumber, setPhoneNumber] = usePersistentState('qr.contact.phoneNumber', '');
+  const [email, setEmail] = usePersistentState('qr.contact.email', '');
+  const [birthday, setBirthday] = usePersistentState('qr.contact.birthday', '');
+  const [address, setAddress] = usePersistentState('qr.contact.address', '');
+  const [website, setWebsite] = usePersistentState('qr.contact.website', '');
+  const [organization, setOrganization] = usePersistentState('qr.contact.organization', '');
+  const [jobTitle, setJobTitle] = usePersistentState('qr.contact.jobTitle', '');
+  const [workPhoneNumber, setWorkPhoneNumber] = usePersistentState('qr.contact.workPhoneNumber', '');
 
   const buildVCard = (): string => {
     let value = '';

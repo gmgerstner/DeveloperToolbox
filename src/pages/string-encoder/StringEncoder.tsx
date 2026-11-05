@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import { copyToClipboard, download, readUploadedFile } from '../../lib/browser-io';
 import { Base32Encoder } from './encoders/base32-encoder';
@@ -7,6 +7,7 @@ import { HtmlEncoder } from './encoders/html-encoder';
 import { LineSorter } from './encoders/line-sorter';
 import { SHA512Encoder } from './encoders/sha512-encoder';
 import { UrlEncoder } from './encoders/url-encoder';
+import { usePersistentState } from '../../lib/persistent-state';
 
 function transform(currentAlg: string, input: string): string {
   switch (currentAlg) {
@@ -36,8 +37,8 @@ function transform(currentAlg: string, input: string): string {
 }
 
 export default function StringEncoder() {
-  const [input, setInput] = useState('');
-  const [currentAlg, setCurrentAlg] = useState('Sort Lines');
+  const [input, setInput] = usePersistentState('stringEncoder.input', '');
+  const [currentAlg, setCurrentAlg] = usePersistentState('stringEncoder.currentAlg', 'Sort Lines');
   const selectFile = useRef<HTMLInputElement>(null);
 
   const output = transform(currentAlg, input);
@@ -121,6 +122,16 @@ export default function StringEncoder() {
             </button>
             <button className="btn btn-primary ms-1 mt-1" type="button" onClick={() => setInput('')}>
               Clear
+            </button>
+            <button
+              className="btn btn-secondary ms-1 mt-1"
+              type="button"
+              onClick={() => {
+                setInput('');
+                setCurrentAlg('Sort Lines');
+              }}
+            >
+              Reset
             </button>
           </div>
         </div>

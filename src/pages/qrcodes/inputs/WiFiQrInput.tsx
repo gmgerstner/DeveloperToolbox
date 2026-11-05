@@ -1,5 +1,4 @@
-import { useState } from 'react';
-
+import { usePersistentState } from '../../../lib/persistent-state';
 import QrInputCard from './QrInputCard';
 import type { QrInputProps } from './types';
 import './WiFiQrInput.css';
@@ -20,10 +19,10 @@ import './WiFiQrInput.css';
     https://github.com/zxing/zxing/wiki/Barcode-Contents#wi-fi-network-config-android-ios-11
 */
 export default function WiFiQrInput({ onGenerate }: QrInputProps) {
-  const [T, setT] = useState('nopass');
-  const [S, setS] = useState('');
-  const [H, setH] = useState(false);
-  const [P, setP] = useState('');
+  const [T, setT] = usePersistentState('qr.wifi.T', 'nopass');
+  const [S, setS] = usePersistentState('qr.wifi.S', '');
+  const [H, setH] = usePersistentState('qr.wifi.H', false);
+  const [P, setP] = usePersistentState('qr.wifi.P', '');
 
   const content = `WIFI:T:${T};S:${S};H:${H};P:${P};`;
 

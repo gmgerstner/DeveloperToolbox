@@ -1,6 +1,7 @@
 import { type ReactNode, useMemo, useRef, useState } from 'react';
 
 import { copyToClipboard, download, readUploadedFile } from '../lib/browser-io';
+import { usePersistentState } from '../lib/persistent-state';
 import './RegexTester.css';
 
 interface RegexSession {
@@ -28,10 +29,10 @@ const AVAILABLE_FLAGS = [
 const MAX_MATCHES = 1000;
 
 export default function RegexTester() {
-  const [input, setInput] = useState('');
-  const [pattern, setPattern] = useState('');
-  const [flags, setFlags] = useState('g');
-  const [replacement, setReplacement] = useState('');
+  const [input, setInput] = usePersistentState('regex.input', '');
+  const [pattern, setPattern] = usePersistentState('regex.pattern', '');
+  const [flags, setFlags] = usePersistentState('regex.flags', 'g');
+  const [replacement, setReplacement] = usePersistentState('regex.replacement', '');
   const [sessionError, setSessionError] = useState<string | null>(null);
 
   const sessionFileRef = useRef<HTMLInputElement>(null);
@@ -186,7 +187,7 @@ export default function RegexTester() {
     }
   };
 
-  const handleClear = () => {
+  const handleReset = () => {
     setInput('');
     setPattern('');
     setFlags('g');
@@ -219,9 +220,9 @@ export default function RegexTester() {
             <button
               type="button"
               className="btn btn-secondary"
-              onClick={handleClear}
+              onClick={handleReset}
             >
-              Clear
+              Reset
             </button>
           </div>
         </div>
