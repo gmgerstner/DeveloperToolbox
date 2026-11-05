@@ -41,7 +41,15 @@ export default function StringEncoder() {
   const [currentAlg, setCurrentAlg] = usePersistentState('stringEncoder.currentAlg', 'Sort Lines');
   const selectFile = useRef<HTMLInputElement>(null);
 
-  const output = transform(currentAlg, input);
+  // Decoders throw on malformed input (e.g. a stray '%' for URL Decode). Show
+  // the error instead of crashing, which would otherwise blank the page on
+  // every visit because the input is remembered.
+  let output: string;
+  try {
+    output = transform(currentAlg, input);
+  } catch (err) {
+    output = `Error: ${err instanceof Error ? err.message : String(err)}`;
+  }
 
   return (
     <>
