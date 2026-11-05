@@ -1,6 +1,5 @@
-import { useState } from 'react';
-
 import { copyToClipboard } from '../lib/browser-io';
+import { usePersistentState } from '../lib/persistent-state';
 import './RelativePath.css';
 
 function parsePath(path: string, delimiter: string): string[] {
@@ -54,11 +53,11 @@ function calcRelativePath(fromArray: string[], toArray: string[], splitBy: strin
 }
 
 export default function RelativePath() {
-  const [firstPath, setFirstPath] = useState('');
-  const [secondPath, setSecondPath] = useState('');
-  const [result1, setResult1] = useState('');
-  const [result2, setResult2] = useState('');
-  const [showResults, setShowResults] = useState(false);
+  const [firstPath, setFirstPath] = usePersistentState('relativePath.firstPath', '');
+  const [secondPath, setSecondPath] = usePersistentState('relativePath.secondPath', '');
+  const [result1, setResult1] = usePersistentState('relativePath.result1', '');
+  const [result2, setResult2] = usePersistentState('relativePath.result2', '');
+  const [showResults, setShowResults] = usePersistentState('relativePath.showResults', false);
 
   const calculate = () => {
     if (!firstPath || !secondPath) {

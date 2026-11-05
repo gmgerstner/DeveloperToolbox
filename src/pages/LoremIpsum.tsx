@@ -1,5 +1,4 @@
-import { useState } from 'react';
-
+import { usePersistentState } from '../lib/persistent-state';
 import './LoremIpsum.css';
 
 const loremWords = [
@@ -109,10 +108,10 @@ function generateParagraphs(length: number, startLorem: boolean): string {
 }
 
 export default function LoremIpsum() {
-  const [output, setOutput] = useState('');
-  const [length, setLength] = useState(1);
-  const [type, setType] = useState('paragraph');
-  const [startLorem, setStartLorem] = useState(false);
+  const [output, setOutput] = usePersistentState('loremIpsum.output', '');
+  const [length, setLength] = usePersistentState('loremIpsum.length', 1);
+  const [type, setType] = usePersistentState('loremIpsum.type', 'paragraph');
+  const [startLorem, setStartLorem] = usePersistentState('loremIpsum.startLorem', false);
 
   const generateClicked = () => {
     if (type === 'word') {
@@ -120,6 +119,13 @@ export default function LoremIpsum() {
     } else if (type === 'paragraph') {
       setOutput(generateParagraphs(length, startLorem));
     }
+  };
+
+  const reset = () => {
+    setOutput('');
+    setLength(1);
+    setType('paragraph');
+    setStartLorem(false);
   };
 
   return (
@@ -165,6 +171,9 @@ export default function LoremIpsum() {
             <div className="col">
               <button type="button" className="mt-1 btn btn-primary" onClick={generateClicked}>
                 Generate
+              </button>
+              <button type="button" className="mt-1 ms-1 btn btn-secondary" onClick={reset}>
+                Reset
               </button>
             </div>
           </div>

@@ -1,10 +1,9 @@
-import { useState } from 'react';
-
+import { usePersistentState } from '../../../lib/persistent-state';
 import QrInputCard from './QrInputCard';
 import type { QrInputProps } from './types';
 
 export default function PhoneQrInput({ onGenerate }: QrInputProps) {
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = usePersistentState('qr.phone.phone', '');
 
   return (
     <QrInputCard title="Phone Number" onGenerate={() => onGenerate(`tel:${phone}`)}>

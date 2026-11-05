@@ -1,12 +1,11 @@
-import { useState } from 'react';
-
+import { usePersistentState } from '../../../lib/persistent-state';
 import type { QrInputProps } from './types';
 
 export default function MapQrInput({ onGenerate }: QrInputProps) {
-  const [latitude, setLatitude] = useState('0');
-  const [latitudeSign, setLatitudeSign] = useState('N');
-  const [longitude, setLongitude] = useState('0');
-  const [longitudeSign, setLongitudeSign] = useState('W');
+  const [latitude, setLatitude] = usePersistentState('qr.map.latitude', '0');
+  const [latitudeSign, setLatitudeSign] = usePersistentState('qr.map.latitudeSign', 'N');
+  const [longitude, setLongitude] = usePersistentState('qr.map.longitude', '0');
+  const [longitudeSign, setLongitudeSign] = usePersistentState('qr.map.longitudeSign', 'W');
 
   const content = `geo:${latitudeSign === 'S' ? '-' : ''}${latitude},${longitudeSign === 'W' ? '-' : ''}${longitude},0`;
 

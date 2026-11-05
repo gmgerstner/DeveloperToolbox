@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import { usePersistentState } from '../lib/persistent-state';
+
 export default function GuidGenerator() {
-  const [guids, setGuids] = useState('');
+  const [guids, setGuids] = usePersistentState('guid.guids', '');
 
   const generateGuids = () => {
     let next = '';
@@ -23,6 +24,9 @@ export default function GuidGenerator() {
         <div className="col">
           <button type="button" className="btn btn-primary mb-1" onClick={generateGuids}>
             Generate GUIDs
+          </button>
+          <button type="button" className="btn btn-secondary mb-1 ms-1" onClick={() => setGuids('')}>
+            Reset
           </button>
         </div>
         <div className="row">

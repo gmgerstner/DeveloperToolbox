@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import { copyToClipboard, download, readUploadedFile } from '../lib/browser-io';
+import { usePersistentState } from '../lib/persistent-state';
 import './StringLength.css';
 
 export default function StringLength() {
-  const [content, setContent] = useState('');
+  const [content, setContent] = usePersistentState('stringLength.content', '');
   const selectFile = useRef<HTMLInputElement>(null);
 
   const characterCount = content.length;

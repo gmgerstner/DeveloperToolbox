@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import { copyToClipboard, download, readUploadedFile } from '../lib/browser-io';
+import { usePersistentState } from '../lib/persistent-state';
 
 /** Turns pasted text into a C# string-concatenation literal. */
 function buildOutput(content: string): string {
@@ -21,7 +22,7 @@ function buildOutput(content: string): string {
 }
 
 export default function StringBuilder() {
-  const [content, setContent] = useState('');
+  const [content, setContent] = usePersistentState('stringBuilder.content', '');
   const selectFile = useRef<HTMLInputElement>(null);
 
   const output = buildOutput(content);

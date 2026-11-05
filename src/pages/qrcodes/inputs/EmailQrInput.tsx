@@ -1,10 +1,9 @@
-import { useState } from 'react';
-
+import { usePersistentState } from '../../../lib/persistent-state';
 import QrInputCard from './QrInputCard';
 import type { QrInputProps } from './types';
 
 export default function EmailQrInput({ onGenerate }: QrInputProps) {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = usePersistentState('qr.email.email', '');
 
   return (
     <QrInputCard title="Email Address" onGenerate={() => onGenerate(`mailto:${email}`)}>
